@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chargepower Inc - Launching Soon</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background: var(--dark-bg, #0a0a0a);
+            color: var(--text-primary, #fff);
+            font-family: 'Inter', sans-serif;
+        }
+        .launch-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #0a0a0a 60%, #1629f4 100%);
+        }
+        .launch-logo {
+            max-width: 380px;
+            margin-bottom: 0.5rem;
+            filter: drop-shadow(0 0 32px var(--primary-blue, #1629f4)) drop-shadow(0 0 16px var(--primary-green, #04fe01));
+            animation: floatGlow 4s ease-in-out infinite;
+        }
+        .launch-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            background: var(--gradient-primary, linear-gradient(135deg, #1629f4, #04fe01));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .launch-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary, #a0a0a0);
+            margin-bottom: 2.5rem;
+        }
+        .launch-anim {
+            margin: 0 auto 2.5rem auto;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .dot {
+            width: 18px;
+            height: 18px;
+            margin: 0 6px;
+            border-radius: 50%;
+            background: var(--primary-green, #04fe01);
+            display: inline-block;
+            animation: bounceDot 1.2s infinite;
+        }
+        .dot:nth-child(2) { animation-delay: 0.2s; background: var(--primary-blue, #1629f4); }
+        .dot:nth-child(3) { animation-delay: 0.4s; background: #fff; }
+        .dot:nth-child(4) { animation-delay: 0.6s; background: var(--primary-green, #04fe01); }
+        @keyframes bounceDot {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-32px); }
+        }
+        .launch-cta {
+            margin-top: 2.5rem;
+        }
+        .launch-cta input[type="email"] {
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            border: none;
+            margin-right: 0.5rem;
+            font-size: 1rem;
+            background: var(--card-bg, #1a1a1a);
+            color: var(--text-primary, #fff);
+        }
+        .launch-cta button {
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            border: none;
+            background: var(--gradient-primary, linear-gradient(135deg, #1629f4, #04fe01));
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .launch-cta button:hover {
+            background: var(--gradient-secondary, linear-gradient(135deg, #04fe01, #1629f4));
+        }
+        @media (max-width: 600px) {
+            .launch-title { font-size: 1.5rem; }
+            .launch-anim { width: 80px; height: 80px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="launch-container">
+                    </a><img src="Assets/Logo/CP_Master_V3-dark.svg" alt="Chargepower Logo" class="launch-logo" /> <a href="index.html">
+        <div class="launch-title">We're Launching Soon!</div>
+        <div class="launch-subtitle">Our services are almost ready.<br>Stay tuned for the official launch of Chargepower India.</div>
+        <div class="launch-anim">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+          </div>
+</body>
+</html> 

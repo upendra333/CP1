@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Chargepower Inc</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="Assets/Logo/CP_Master_V3-dark.svg" alt="Chargepower Logo" class="cp-logo" />
+                </a>
+                <span class="region-label">- North America</span>
+            </div>
+            <div class="nav-menu">
+                <a href="nahome.html" class="nav-link">Home</a>
+                <a href="naprojects.html" class="nav-link">Projects</a>
+                <a href="naabout.html" class="nav-link">About</a>
+                <a href="naContact.html" class="nav-link active">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Get In Touch</h1>
+                <p class="hero-subtitle">Ready to power your next energy storage project? <br>Let's discuss how we can help you achieve your goals.</p>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-main-section">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Information -->
+                <div class="contact-info-section">
+                    <h2>Contact Information</h2>
+                    <p>Connect with our team of energy storage experts. We're here to help you navigate the complexities of BESS projects and renewable energy integration.</p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="method-details">
+                                <h3>Email</h3>
+                                <p>info@chargepowerinc.com</p>
+                                <span class="method-note">Primary contact method</span>
+                            </div>
+                        </div>
+
+
+
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="method-details">
+                                <h3>Office</h3>
+                                <p>123 Energy Street<br>San Francisco, CA 94105</p>
+                                <span class="method-note">Headquarters</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="method-details">
+                                <h3>Business Hours</h3>
+                                <p>Monday - Friday<br>9:00 AM - 6:00 PM EST</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-connect">
+                        <h3>Connect With Us</h3>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/company/chargepowerinc" class="social-link" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-linkedin"></i>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                                <span>Twitter</span>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-facebook"></i>
+                                <span>Facebook</span>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fab fa-instagram"></i>
+                                <span>Instagram</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-section">
+                    <h2>Send Us a Message</h2>
+                    <p>Fill out the form below and we'll get back to you within 2 hours.</p>
+                    
+                    <form class="contact-form-main">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="company">Company</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="projectType">Project Type *</label>
+                            <select id="projectType" name="projectType" required>
+                                <option value="">Select a project type</option>
+                                <option value="bess">BESS Installation</option>
+                                <option value="hybrid">Hybrid System</option>
+                                <option value="commissioning">Commissioning</option>
+                                <option value="consulting">Consulting</option>
+                                <option value="maintenance">O&M Services</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="projectSize">Project Size</label>
+                            <select id="projectSize" name="projectSize">
+                                <option value="">Select project size</option>
+                                <option value="small">Small (< 10 MW)</option>
+                                <option value="medium">Medium (10-50 MW)</option>
+                                <option value="large">Large (50-200 MW)</option>
+                                <option value="utility">Utility Scale (> 200 MW)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="6" placeholder="Tell us about your project requirements, timeline, and any specific challenges you're facing..." required></textarea>
+                        </div>
+
+                        <!-- Newsletter subscription temporarily hidden
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="newsletter" id="newsletter">
+                                <span class="checkmark"></span>
+                                Subscribe to our newsletter for industry insights and updates
+                            </label>
+                        </div>
+                        -->
+
+                        <button type="submit" class="btn btn-primary btn-large">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What services do you offer?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We provide comprehensive BESS solutions including engineering reviews, SCADA/EMS optimization, commissioning management, market testing, and O&M strategy. Our services span the entire project lifecycle.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What regions do you serve?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We primarily serve North America, including the United States and Canada, with expertise in CAISO, ERCOT, and MISO markets. We are launching soon in India and also support international projects on a case-by-case basis.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How quickly can you respond to inquiries?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We typically respond to all inquiries within 6 hours during business hours. For urgent matters, we provide 24/7 emergency support for existing clients.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do you provide free consultations?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer complimentary initial consultations to discuss your project requirements and determine how we can best support your energy storage goals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-social" style="margin: 0 auto;">
+                    <a href="https://www.linkedin.com/company/chargepowerinc" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Chargepower Inc. All rights reserved.</p>
+                <p>Designed & Developed by ardnepu</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Contact page specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // FAQ Accordion
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const faqItem = this.parentElement;
+                    const answer = this.nextElementSibling;
+                    const icon = this.querySelector('i');
+                    
+                    // Close other FAQ items
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        if (item !== faqItem) {
+                            item.classList.remove('active');
+                            item.querySelector('.faq-answer').style.maxHeight = '0';
+                            item.querySelector('i').style.transform = 'rotate(0deg)';
+                        }
+                    });
+                    
+                    // Toggle current FAQ item
+                    faqItem.classList.toggle('active');
+                    
+                    if (faqItem.classList.contains('active')) {
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                        icon.style.transform = 'rotate(180deg)';
+                    } else {
+                        answer.style.maxHeight = '0';
+                        icon.style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+
+            // Form submission handling
+            const contactForm = document.querySelector('.contact-form-main');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form data
+                    const formData = new FormData(this);
+                    const firstName = this.querySelector('#firstName').value;
+                    const lastName = this.querySelector('#lastName').value;
+                    const email = this.querySelector('#email').value;
+                    const message = this.querySelector('#message').value;
+
+                    // Simple validation
+                    if (!firstName || !lastName || !email || !message) {
+                        showNotification('Please fill in all required fields', 'error');
+                        return;
+                    }
+
+                    if (!isValidEmail(email)) {
+                        showNotification('Please enter a valid email address', 'error');
+                        return;
+                    }
+
+                    // Simulate form submission
+                    showNotification('Message sent successfully! We\'ll get back to you within 2 hours.', 'success');
+                    this.reset();
+                });
+            }
+
+            // Social link hover effects
+            const socialLinks = document.querySelectorAll('.social-link');
+            socialLinks.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+
+        // Utility functions (if not already defined in script.js)
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            
+            notification.style.position = 'fixed';
+            notification.style.top = '20px';
+            notification.style.right = '20px';
+            notification.style.padding = '15px 20px';
+            notification.style.borderRadius = '8px';
+            notification.style.color = 'white';
+            notification.style.fontWeight = '600';
+            notification.style.zIndex = '10000';
+            notification.style.transform = 'translateX(100%)';
+            notification.style.transition = 'transform 0.3s ease';
+            
+            if (type === 'success') {
+                notification.style.background = 'var(--primary-green)';
+            } else {
+                notification.style.background = '#ff4444';
+            }
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(0)';
+            }, 100);
+            
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html> 

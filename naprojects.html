@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Chargepower Inc</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="Assets/Logo/CP_Master_V3-dark.svg" alt="Chargepower Logo" class="cp-logo" />
+                </a>
+                <span class="region-label">- North America</span>
+            </div>
+            <div class="nav-menu">
+                <a href="nahome.html" class="nav-link">Home</a>
+                <a href="naprojects.html" class="nav-link active">Projects</a>
+                <a href="naabout.html" class="nav-link">About</a>
+                <a href="nacontact.html" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="projects-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Our Projects</h1>
+                <p class="hero-subtitle">Delivering excellence across North America's energy storage landscape</p>
+                <div class="projects-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">10+</span>
+                        <span class="stat-label">Active Projects</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">3.4+ GW</span>
+                        <span class="stat-label">Total Capacity</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">ISO Markets</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section">
+        <div class="container">
+            <div class="projects-header">
+                <h2>Battery Energy Storage Systems</h2>
+                <p>Our portfolio spans across major ISO markets, delivering reliable energy storage solutions</p>
+            </div>
+            
+            <div class="projects-filters">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="completed">Completed</button>
+                <button class="filter-btn" data-filter="ongoing">Ongoing</button>
+                <button class="filter-btn" data-filter="upcoming">Upcoming</button>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card" data-status="upcoming">
+                    <div class="project-header">
+                        <div class="project-size">
+                            <span class="size-number">10MW/20MWH</span>
+                            <span class="size-unit"></span>
+                        </div>
+                        <div class="project-status upcoming">Q2, 2025*</div>
+                    </div>
+                    <div class="project-details">
+                        <h3>California BESS Project</h3>
+                        <div class="project-info">
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>California</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-bolt"></i>
+                                <span>CAISO</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-tools"></i>
+                                <span>Construction, Commissioning Management, Hybrid Services</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card" data-status="completed">
+                    <div class="project-header">
+                        <div class="project-size">
+                            <span class="size-number">60MW/120MWH</span>
+                            <span class="size-unit"></span>
+                        </div>
+                        <div class="project-status completed">Q4, 2023</div>
+                    </div>
+                    <div class="project-details">
+                        <h3>Texas ERCOT BESS</h3>
+                        <div class="project-info">
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Texas</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-bolt"></i>
+                                <span>ERCOT</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-tools"></i>
+                                <span>Construction, Commissioning Management, Hybrid Services</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card" data-status="completed">
+                    <div class="project-header">
+                        <div class="project-size">
+                            <span class="size-number">100MW/200MWH</span>
+                            <span class="size-unit"></span>
+                        </div>
+                        <div class="project-status completed">Q1, 2024</div>
+                    </div>
+                    <div class="project-details">
+                        <h3>Texas Large Scale BESS</h3>
+                        <div class="project-info">
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Texas</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-bolt"></i>
+                                <span>ERCOT</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-tools"></i>
+                                <span>Construction, Commissioning Management, Hybrid Services</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card" data-status="completed">
+                    <div class="project-header">
+                        <div class="project-size">
+                            <span class="size-number">200MW/400MWH</span>
+                            <span class="size-unit"></span>
+                        </div>
+                        <div class="project-status completed">Q2, 2024</div>
+                    </div>
+                    <div class="project-details">
+                        <h3>Texas Mega BESS</h3>
+                        <div class="project-info">
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Texas</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-bolt"></i>
+                                <span>ERCOT</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-tools"></i>
+                                <span>Construction, Commissioning Management, Hybrid Services</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card" data-status="upcoming">
+                    <div class="project-header">
+                        <div class="project-size">
+                            <span class="size-number">200MW/400MWH</span>
+                            <span class="size-unit"></span>
+                        </div>
+                        <div class="project-status upcoming">Q2, 2025*</div>
+                    </div>
+                    <div class="project-details">
+                        <h3>Texas Advanced BESS</h3>
+                        <div class="project-info">
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Texas</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-bolt"></i>
+                                <span>ERCOT</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-tools"></i>
+                                <span>Construction, Commissioning Management, Hybrid Services</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card" data-status="ongoing">
+                    <div class="project-header">
+                        <div class="project-size">
+                            <span class="size-number">200MW/400MWH</span>
+                            <span class="size-unit"></span>
+                        </div>
+                        <div class="project-status ongoing">Q2, 2025</div>
+                    </div>
+                    <div class="project-details">
+                        <h3>Michigan MISO BESS</h3>
+                        <div class="project-info">
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Michigan</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-bolt"></i>
+                                <span>MISO</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-tools"></i>
+                                <span>Construction, Commissioning Management, Hybrid Services</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 7 -->
+                <div class="project-card" data-status="upcoming">
+                    <div class="project-header">
+                        <div class="project-size">
+                            <span class="size-number">75MW/300MWH</span>
+                            <span class="size-unit"></span>
+                        </div>
+                        <div class="project-status upcoming">Q2, 2025*</div>
+                    </div>
+                    <div class="project-details">
+                        <h3>California Hybrid BESS</h3>
+                        <div class="project-info">
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>California</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-bolt"></i>
+                                <span>CAISO</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-tools"></i>
+                                <span>Construction, Commissioning Management, Hybrid Services</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 8 -->
+                <div class="project-card" data-status="upcoming">
+                    <div class="project-header">
+                        <div class="project-size">
+                            <span class="size-number">100MW/200MWH</span>
+                            <span class="size-unit"></span>
+                        </div>
+                        <div class="project-status upcoming">Q1, 2025</div>
+                    </div>
+                    <div class="project-details">
+                        <h3>Texas Next Gen BESS</h3>
+                        <div class="project-info">
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Texas</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-bolt"></i>
+                                <span>ERCOT</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-tools"></i>
+                                <span>Construction, Commissioning Management, Hybrid Services</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 9 -->
+                <div class="project-card" data-status="upcoming">
+                    <div class="project-header">
+                        <div class="project-size">
+                            <span class="size-number">150MW/300MWH</span>
+                            <span class="size-unit"></span>
+                        </div>
+                        <div class="project-status upcoming">Q1, 2025</div>
+                    </div>
+                    <div class="project-details">
+                        <h3>Texas Industrial BESS</h3>
+                        <div class="project-info">
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Texas</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-bolt"></i>
+                                <span>ERCOT</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-tools"></i>
+                                <span>Construction, Commissioning Management, Hybrid Services</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 10 -->
+                <div class="project-card" data-status="upcoming">
+                    <div class="project-header">
+                        <div class="project-size">
+                            <span class="size-number">240MW/480MWH</span>
+                            <span class="size-unit"></span>
+                        </div>
+                        <div class="project-status upcoming">Q2, 2025*</div>
+                    </div>
+                    <div class="project-details">
+                        <h3>Texas Ultra BESS</h3>
+                        <div class="project-info">
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Texas</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-bolt"></i>
+                                <span>ERCOT</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-tools"></i>
+                                <span>Construction, Commissioning Management, Hybrid Services</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 11 -->
+                <div class="project-card" data-status="upcoming">
+                    <div class="project-header">
+                        <div class="project-size">
+                            <span class="size-number">15MW/60MWH</span>
+                            <span class="size-unit"></span>
+                        </div>
+                        <div class="project-status upcoming">Q3, 2025*</div>
+                    </div>
+                    <div class="project-details">
+                        <h3>California Community BESS</h3>
+                        <div class="project-info">
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>California</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-bolt"></i>
+                                <span>CAISO</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-tools"></i>
+                                <span>Construction, Commissioning Management, Hybrid Services</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section class="technologies-section">
+        <div class="container">
+            <div class="technologies-header">
+                <h2>Technologies</h2>
+                <p>Partnering with industry-leading manufacturers and solution providers</p>
+            </div>
+            
+            <div class="technologies-grid">
+                <!-- BESS Technologies -->
+                <div class="tech-category">
+                    <h3>BESS</h3>
+                    <div class="logo-scroll-container">
+                        <div class="logo-scroll">
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/BYD.webp" alt="BYD" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/samsungsdi.webp" alt="Samsung SDI" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/Toshiba.webp" alt="Toshiba" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/lgchem.webp" alt="LG Chem" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/CATL.webp" alt="CATL" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/MFINarada.webp" alt="MFI Narada" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/powin.webp" alt="Powin" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/risensyl.png" alt="Risen Energy" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/energyvault.png" alt="Energy Vault" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/hithium.png" alt="Hithium" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/sungrow.webp" alt="Sungrow" />
+                            </div>
+                            <!-- Duplicate logos for seamless scrolling -->
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/BYD.webp" alt="BYD" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/samsungsdi.webp" alt="Samsung SDI" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/Toshiba.webp" alt="Toshiba" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/lgchem.webp" alt="LG Chem" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/CATL.webp" alt="CATL" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/MFINarada.webp" alt="MFI Narada" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/powin.webp" alt="Powin" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/risensyl.png" alt="Risen Energy" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/energyvault.png" alt="Energy Vault" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/hithium.png" alt="Hithium" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/sungrow.webp" alt="Sungrow" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PCS Technologies -->
+                <div class="tech-category">
+                    <h3>PCS</h3>
+                    <div class="logo-scroll-container">
+                        <div class="logo-scroll">
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/powerelectronics.webp" alt="Power Electronics" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/BYD.webp" alt="BYD" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/Dynapower.webp" alt="Dynapower" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/sma.webp" alt="SMA" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/epcpower.webp" alt="EPC Power" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/sinexcel.webp" alt="Sinexcel" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/sungrow.webp" alt="Sungrow" />
+                            </div>
+                            <!-- Duplicate logos for seamless scrolling -->
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/powerelectronics.webp" alt="Power Electronics" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/BYD.webp" alt="BYD" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/Dynapower.webp" alt="Dynapower" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/sma.webp" alt="SMA" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/epcpower.webp" alt="EPC Power" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/sinexcel.webp" alt="Sinexcel" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/sungrow.webp" alt="Sungrow" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EMS Technologies -->
+                <div class="tech-category">
+                    <h3>EMS</h3>
+                    <div class="logo-scroll-container">
+                        <div class="logo-scroll">
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/resEMS.png" alt="RES EMS" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/EVEMS.png" alt="EV EMS" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/indieEMS.png" alt="Indie EMS" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/fractalems.png" alt="Fractal EMS" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/RRC.png" alt="RRC" />
+                            </div>
+                            <!-- Duplicate logos for seamless scrolling -->
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/resEMS.png" alt="RES EMS" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/EVEMS.png" alt="EV EMS" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/indieEMS.png" alt="Indie EMS" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/fractalems.png" alt="Fractal EMS" />
+                            </div>
+                            <div class="logo-item">
+                                <img src="Assets/Supplier_logo/RRC.webp" alt="RRC" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-social" style="margin: 0 auto;">
+                    <a href="https://www.linkedin.com/company/chargepowerinc" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Chargepower Inc. All rights reserved.</p>
+                <p>Designed & Developed by ardnepu</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Projects page specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filter functionality
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+
+                    const filter = this.getAttribute('data-filter');
+
+                    projectCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-status') === filter) {
+                            card.style.display = 'block';
+                            card.style.animation = 'fadeInUp 0.6s ease forwards';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Project card hover effects
+            projectCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.02)';
+                    this.style.boxShadow = '0 20px 40px rgba(22, 41, 244, 0.2)';
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                    this.style.boxShadow = '0 8px 25px rgba(22, 41, 244, 0.1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

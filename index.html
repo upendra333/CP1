@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chargepower Inc - Battery Energy Storage Systems</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Hide nav and footer if styles.css is reused */
+        .navbar, .footer { display: none !important; }
+        .hero { min-height: 100vh; }
+        .hero-content { margin-top: 0; }
+        .landing-buttons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideInUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.8s forwards;
+        }
+        /* Smooth animations for index page title lines */
+        .hero-title .title-line:nth-child(1) {
+            animation-delay: 0s;
+        }
+        .hero-title .title-line:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .hero-title .title-line:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        .hero-subtitle {
+            animation-delay: 0.6s !important;
+        }
+        @media (max-width: 768px) {
+            .landing-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-logo-topright">
+        <img src="Assets/Logo/CP_Master_V3-dark.svg" alt="Chargepower Logo" class="cp-logo" />
+    </div>
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line">Addressing Critical Challenges with</span>
+                <span class="title-line">Best-in-Class</span>
+                <span class="title-line">Battery Energy Storage Solutions</span>
+            </h1>
+            <p class="hero-subtitle">Select Location for Tailored Solutions</p>
+            <div class="landing-buttons">
+                <a href="nahome.html" class="btn btn-secondary">North America</a>
+                <a href="launch.html" class="btn btn-secondary">Asia ( India )</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="energy-grid">
+                <div class="grid-item energy-cell"></div>
+                <div class="grid-item energy-cell"></div>
+                <div class="grid-item energy-cell"></div>
+                <div class="grid-item energy-cell"></div>
+                <div class="grid-item energy-cell"></div>
+                <div class="grid-item energy-cell"></div>
+                <div class="grid-item energy-cell"></div>
+                <div class="grid-item energy-cell"></div>
+                <div class="grid-item energy-cell"></div>
+                <div class="grid-item energy-cell"></div>
+                <div class="grid-item energy-cell"></div>
+                <div class="grid-item energy-cell"></div>
+            </div>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html> 
