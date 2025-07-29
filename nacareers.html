@@ -400,24 +400,20 @@
             }
         });
         
-        // Load jobs when page loads
-        document.addEventListener('DOMContentLoaded', loadJobListings);
-        
-        // Mobile menu toggle
-        const navToggle = document.querySelector('.nav-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        navToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            navToggle.classList.toggle('active');
-        });
-        
-        // Close mobile menu when clicking on a nav link
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                navToggle.classList.remove('active');
-            });
+        // Load jobs when page loads and setup mobile menu
+        document.addEventListener('DOMContentLoaded', function() {
+            loadJobListings();
+            
+            // Mobile menu toggle
+            const navToggle = document.querySelector('.nav-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+
+            
+
+            
+            // Mobile menu is handled by script.js
+            console.log('Mobile menu setup complete - handled by script.js');
         });
         
         // Job filter logic

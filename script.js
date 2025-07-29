@@ -1,5 +1,54 @@
 // Smooth scrolling for navigation links
 document.addEventListener('DOMContentLoaded', function() {
+    // Mobile video autoplay fix
+    function fixMobileVideoAutoplay() {
+        const videos = document.querySelectorAll('video[autoplay]');
+        
+        videos.forEach(video => {
+            // Ensure all required attributes are present
+            video.setAttribute('autoplay', '');
+            video.setAttribute('muted', '');
+            video.setAttribute('loop', '');
+            video.setAttribute('playsinline', '');
+            video.setAttribute('webkit-playsinline', '');
+            video.setAttribute('x-webkit-airplay', 'allow');
+            
+            // Set video properties for mobile compatibility
+            video.muted = true;
+            video.playsInline = true;
+            
+            // Handle video loading and play attempts
+            video.addEventListener('loadedmetadata', function() {
+                // Try to play the video
+                const playPromise = video.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.log('Video autoplay failed:', error);
+                        // Fallback: try to play on user interaction
+                        document.addEventListener('touchstart', function playVideo() {
+                            video.play().catch(e => console.log('Play failed:', e));
+                            document.removeEventListener('touchstart', playVideo);
+                        }, { once: true });
+                        
+                        document.addEventListener('click', function playVideo() {
+                            video.play().catch(e => console.log('Play failed:', e));
+                            document.removeEventListener('click', playVideo);
+                        }, { once: true });
+                    });
+                }
+            });
+            
+            // Handle video errors
+            video.addEventListener('error', function(e) {
+                console.log('Video error:', e);
+            });
+        });
+    }
+    
+    // Call the mobile video fix
+    fixMobileVideoAutoplay();
+    
     // Navigation smooth scrolling
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
