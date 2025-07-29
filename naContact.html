@@ -23,6 +23,7 @@
                 <a href="naprojects.html" class="nav-link">Projects</a>
                 <a href="naabout.html" class="nav-link">About</a>
                 <a href="nablog.html" class="nav-link">Blog</a>
+                <a href="nacareers.html" class="nav-link">Careers</a>
                 <a href="naContact.html" class="nav-link active">Contact</a>
             </div>
             <div class="nav-toggle">
@@ -73,7 +74,7 @@
                             </div>
                             <div class="method-details">
                                 <h3>Headquarters</h3>
-                                <p>3601, Hwy 7 E, Markham, Ontario, L3R 0M3, Canada</p>
+                                <p>1005-3601, Hwy 7 E, Markham, Ontario, L3R 0M3, Canada</p>
                                 <span class="method-note">Headquarters</span>
                             </div>
                         </div>
@@ -90,12 +91,15 @@
                     </div>
 
                     <div class="social-connect">
-                        <h3>Connect With Us</h3>
-                        <div class="social-links">
-                            <a href="https://www.linkedin.com/company/chargepowerinc" class="social-link" target="_blank" rel="noopener noreferrer">
-                                <i class="fab fa-linkedin"></i>
-                                <span>LinkedIn</span>
+                        <h3>Follow us for regular updates</h3>
+                        <div class="social-links" style="display:block;text-align:left;max-width:320px;">
+                            <a href="https://www.linkedin.com/company/chargepowerinc" class="social-link linkedin-gradient-btn" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;justify-content:center;gap:0.75rem;width:65%;padding:0.6rem 1.2rem;border-radius:32px;background:linear-gradient(135deg,#1e5b9e 0%,#0a66c2 100%);color:#fff;font-weight:600;text-decoration:none;box-shadow:0 2px 8px #0001;transition:background 0.2s;">
+                                <span class="method-icon" style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#1e5b9e 0%,#0a66c2 100%);color:#fff;font-size:1.3rem;margin-right:0.7rem;">
+                                    <i class="fab fa-linkedin"></i>
+                                </span>
+                                <span style="font-size:1.1rem;letter-spacing:0.01em;">LinkedIn</span>
                             </a>
+                            <!--
                             <a href="#" class="social-link">
                                 <i class="fab fa-twitter"></i>
                                 <span>Twitter</span>
@@ -108,6 +112,7 @@
                                 <i class="fab fa-instagram"></i>
                                 <span>Instagram</span>
                             </a>
+                            -->
                         </div>
                     </div>
                 </div>
@@ -115,7 +120,7 @@
                 <!-- Contact Form -->
                 <div class="contact-form-section">
                     <h2>Send Us a Message</h2>
-                    <p>Fill out the form below and we'll get back to you within 2 hours.</p>
+                    <p>Fill out the form below and we'll get back to you.</p>
                     
                     <form class="contact-form-main">
                         <div class="form-row">
@@ -250,12 +255,21 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 Charge Power Inc. All rights reserved.</p>
-                <p>Designed & Developed by ardnepu</p>
+                <p>Designed & Developed by <a href="http://www.ardnepu.com" target="_blank" rel="noopener noreferrer" style="background: linear-gradient(90deg, #1e90ff 0%, #00c3ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none;">ardnepu</a></p>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <!-- EmailJS integration -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("YOUR_EMAILJS_PUBLIC_KEY"); // Replace with your EmailJS public key
+        })();
+    </script>
     <script>
         // Contact page specific functionality
         document.addEventListener('DOMContentLoaded', function() {
@@ -293,7 +307,7 @@
             // Form submission handling
             const contactForm = document.querySelector('.contact-form-main');
             if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
+                contactForm.addEventListener('submit', async function(e) {
                     e.preventDefault();
                     
                     // Get form data
@@ -301,10 +315,14 @@
                     const firstName = this.querySelector('#firstName').value;
                     const lastName = this.querySelector('#lastName').value;
                     const email = this.querySelector('#email').value;
+                    const phone = this.querySelector('#phone').value;
+                    const company = this.querySelector('#company').value;
+                    const projectType = this.querySelector('#projectType').value;
+                    const projectSize = this.querySelector('#projectSize').value;
                     const message = this.querySelector('#message').value;
 
                     // Simple validation
-                    if (!firstName || !lastName || !email || !message) {
+                    if (!firstName || !lastName || !email || !message || !projectType) {
                         showNotification('Please fill in all required fields', 'error');
                         return;
                     }
@@ -314,9 +332,62 @@
                         return;
                     }
 
-                    // Simulate form submission
-                    showNotification('Message sent successfully! We\'ll get back to you within 2 hours.', 'success');
-                    this.reset();
+                    // Show loading state
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                    submitBtn.disabled = true;
+
+                    try {
+                        // Save submission to database
+                        const { data, error } = await supabase
+                            .from('contact_submissions')
+                            .insert([{
+                                first_name: firstName,
+                                last_name: lastName,
+                                email: email,
+                                phone: phone || null,
+                                company: company || null,
+                                project_type: projectType,
+                                project_size: projectSize || null,
+                                message: message
+                            }]);
+
+                        if (error) {
+                            throw error;
+                        }
+
+                        // Send email notification via EmailJS
+                        const templateParams = {
+                            first_name: firstName,
+                            last_name: lastName,
+                            email: email,
+                            phone: phone,
+                            company: company,
+                            project_type: projectType,
+                            project_size: projectSize,
+                            message: message
+                        };
+                        emailjs.send(
+                            'YOUR_EMAILJS_SERVICE_ID', // Replace with your EmailJS service ID
+                            'YOUR_EMAILJS_TEMPLATE_ID', // Replace with your EmailJS template ID
+                            templateParams
+                        ).then(function(response) {
+                            // Optionally show a notification for email sent
+                        }, function(error) {
+                            // Optionally handle email send error
+                        });
+
+                        showNotification('Message sent successfully! We\'ll get back to you within 2 hours.', 'success');
+                        this.reset();
+                    } catch (error) {
+                        console.error('Error submitting form:', error);
+                        showNotification('Failed to send message. Please try again or contact us directly.', 'error');
+                    } finally {
+                        // Reset button
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                    }
                 });
             }
 

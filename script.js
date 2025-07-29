@@ -29,15 +29,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Navbar background on scroll
+    // Navbar glass effect on scroll
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', function() {
-        if (window.scrollY > 100) {
-            navbar.style.background = 'rgba(10, 10, 10, 0.98)';
-            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
         } else {
-            navbar.style.background = 'rgba(10, 10, 10, 0.95)';
-            navbar.style.boxShadow = 'none';
+            navbar.classList.remove('scrolled');
         }
     });
 
@@ -83,15 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(element);
     });
 
-    // Parallax effect for hero section
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const hero = document.querySelector('.hero');
-        if (hero) {
-            const rate = scrolled * -0.5;
-            hero.style.transform = `translateY(${rate}px)`;
-        }
-    });
+
 
     // Bento card hover effects
     bentoCards.forEach(card => {
@@ -161,23 +151,30 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Smooth reveal animation for sections
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-        const sectionObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
+    // Only run scroll-reveal animation if not on naabout.html
+    if (!window.location.pathname.includes('naabout.html')) {
+        const sections = document.querySelectorAll('section');
+        sections.forEach(section => {
+            // Skip hero sections to prevent logo animation
+            if (section.classList.contains('hero')) {
+                return;
+            }
+            
+            const sectionObserver = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
 
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(50px)';
-        section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-        sectionObserver.observe(section);
-    });
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(50px)';
+            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            sectionObserver.observe(section);
+        });
+    }
 
     // Battery animation enhancement
     const batteryLevel = document.querySelector('.battery-level');

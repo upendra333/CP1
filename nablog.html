@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -23,8 +25,8 @@
                 <a href="naprojects.html" class="nav-link">Projects</a>
                 <a href="naabout.html" class="nav-link">About</a>
                 <a href="nablog.html" class="nav-link active">Blog</a>
+                <a href="nacareers.html" class="nav-link">Careers</a>
                 <a href="naContact.html" class="nav-link">Contact</a>
-
             </div>
             <div class="nav-toggle">
                 <span></span>
@@ -35,7 +37,11 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="projects-hero" style="padding-bottom: 20px; min-height: 40vh;">
+    <section class="contact-hero">
+        <video autoplay muted loop playsinline style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:-1;">
+            <source src="Assets/videos/Greenlines.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
         <div class="container">
             <div class="hero-content">
                 <h1 class="hero-title">Blog & Updates</h1>
@@ -55,134 +61,9 @@
                 <button class="filter-btn" data-filter="articles">Articles</button>
             </div>
             <div class="projects-grid" id="newsGrid">
-                <!-- Sample Post 1 -->
-                <div class="project-card news-post" data-post="1" data-type="news">
-                    <span class="news-tag">News</span>
-                    <img src="Assets/Blog/about.png" alt="News 1" style="width:100%;height:225px;object-fit:cover;border-radius:12px 12px 0 0;">
-                    <div class="project-header" style="margin-bottom:0;">
-                        <div>
-                            <h3 style="margin-bottom:0.3rem;">Exciting Launch: New Product Line</h3>
-                            <span class="news-date">April 10, 2024</span>
-                        </div>
-                    </div>
-                    <br>
-                    <button class="btn btn-primary read-btn" data-post="1">Read</button>
-                </div>
-                <!-- Sample Post 2 -->
-                <div class="project-card news-post" data-post="2" data-type="articles">
-                    <span class="news-tag">Articles</span>
-                    <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg" alt="CEO Interview Video" style="width:100%;height:225px;object-fit:cover;border-radius:12px 12px 0 0;">
-                    <div class="project-header" style="margin-bottom:0;">
-                        <div>
-                            <h3 style="margin-bottom:0.3rem;">CEO Interview: Vision for the Future</h3>
-                            <span class="news-date">April 8, 2024</span>
-                        </div>
-                    </div>
-                    <br>
-                    <button class="btn btn-primary read-btn" data-post="2">Read</button>
-                </div>
-                <!-- Sample Post 3 -->
-                <div class="project-card news-post" data-post="3" data-type="case-studies">
-                    <span class="news-tag">Case Studies</span>
-                    <img src="Assets/Blog/app.png" alt="News 3" style="width:100%;height:225px;object-fit:cover;border-radius:12px 12px 0 0;">
-                    <div class="project-header" style="margin-bottom:0;">
-                        <div>
-                            <h3 style="margin-bottom:0.3rem;">Awarded Best Innovation 2024</h3>
-                            <span class="news-date">April 5, 2024</span>
-                        </div>
-                    </div>
-                    <br>                    <br>
-                    <button class="btn btn-primary read-btn" data-post="3">Read</button>
-                </div>
-                <!-- Sample Post 4 -->
-                <div class="project-card news-post" data-post="4" data-type="news">
-                    <span class="news-tag">News</span>
-                    <img src="Assets/Blog/art-1.png" alt="News 4" style="width:100%;height:225px;object-fit:cover;border-radius:12px 12px 0 0;">
-                    <div class="project-header" style="margin-bottom:0;">
-                        <div>
-                            <h3 style="margin-bottom:0.3rem;">Sustainability Initiatives</h3>
-                            <span class="news-date">April 2, 2024</span>
-                        </div>
-                    </div>
-                    <br>                    <br>
-                    <button class="btn btn-primary read-btn" data-post="4">Read</button>
-                </div>
-                <!-- Sample Post 5 -->
-                <div class="project-card news-post" data-post="5" data-type="articles">
-                    <span class="news-tag">Articles</span>
-                    <img src="https://img.youtube.com/vi/3JZ_D3ELwOQ/hqdefault.jpg" alt="Webinar Video" style="width:100%;height:225px;object-fit:cover;border-radius:12px 12px 0 0;">
-                    <div class="project-header" style="margin-bottom:0;">
-                        <div>
-                            <h3 style="margin-bottom:0.3rem;">Webinar: Industry Trends 2024</h3>
-                            <span class="news-date">March 28, 2024</span>
-                        </div>
-                    </div>
-                    <br>                    <br>
-                    <button class="btn btn-primary read-btn" data-post="5">Read</button>
-                </div>
-                <!-- Sample Post 6 -->
-                <div class="project-card news-post" data-post="6" data-type="case-studies">
-                    <span class="news-tag">Case Studies</span>
-                    <img src="Assets/Blog/art.png" alt="News 6" style="width:100%;height:225px;object-fit:cover;border-radius:12px 12px 0 0;">
-                    <div class="project-header" style="margin-bottom:0;">
-                        <div>
-                            <h3 style="margin-bottom:0.3rem;">Community Outreach Program</h3>
-                            <span class="news-date">March 20, 2024</span>
-                        </div>
-                    </div>
-                    <br>                    <br>
-                    <button class="btn btn-primary read-btn" data-post="6">Read</button>
-                </div>
-                <!-- Sample Post 7 -->
-                <div class="project-card news-post" data-post="7" data-type="news">
-                    <span class="news-tag">News</span>
-                    <img src="Assets/Blog/blog.png" alt="News 7" style="width:100%;height:225px;object-fit:cover;border-radius:12px 12px 0 0;">
-                    <div class="project-header" style="margin-bottom:0;">
-                        <div>
-                            <h3 style="margin-bottom:0.3rem;">Employee Spotlight: Meet the Team</h3>
-                            <span class="news-date">March 15, 2024</span>
-                        </div>
-                    </div>
-                    <br>           
-                    <button class="btn btn-primary read-btn" data-post="7">Read</button>
-                </div>
-                <!-- Sample Post 8 -->
-                <div class="project-card news-post" data-post="8" data-type="articles">
-                    <span class="news-tag">Articles</span>
-                    <img src="https://img.youtube.com/vi/tgbNymZ7vqY/hqdefault.jpg" alt="Tech Demo Video" style="width:100%;height:225px;object-fit:cover;border-radius:12px 12px 0 0;">
-                    <div class="project-header" style="margin-bottom:0;">
-                        <div>
-                            <h3 style="margin-bottom:0.3rem;">Tech Demo: Next-Gen Solutions</h3>
-                            <span class="news-date">March 10, 2024</span>
-                        </div>
-                    </div>
-                    <br>                    <br>
-                    <button class="btn btn-primary read-btn" data-post="8">Read</button>
-                </div>
-                <!-- Sample Post 9 -->
-                <div class="project-card news-post" data-post="9" data-type="case-studies">
-                    <span class="news-tag">Case Studies</span>
-                    <img src="Assets/Blog/Books.png" alt="News 9" style="width:100%;height:225px;object-fit:cover;border-radius:12px 12px 0 0;">
-                    <div class="project-header" style="margin-bottom:0;">
-                        <div>
-                            <h3 style="margin-bottom:0.3rem;">Upcoming Events: Save the Dates</h3>
-                            <span class="news-date">March 5, 2024</span>
-                        </div>
-                    </div>
-                    <br>                   
-                    <button class="btn btn-primary read-btn" data-post="9">Read</button>
-                </div>
             </div>
         </div>
     </section>
-
-    <!-- News Modal -->
-    <div id="newsModal" class="modal-overlay" style="display:none;">
-        <div class="modal-content" id="modalContent">
-            <span class="modal-close" id="modalClose">&times;</span>
-            <div id="modalBody"></div>
-        </div>
-    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -192,121 +73,168 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 Charge Power Inc. All rights reserved.</p>
-                <p>Designed & Developed by ardnepu</p>
+                <p>Designed & Developed by <a href="http://www.ardnepu.com" target="_blank" rel="noopener noreferrer" style="background: linear-gradient(90deg, #1e90ff 0%, #00c3ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none;">ardnepu</a></p>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Post Modal -->
+    <div id="postModal" class="modal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); justify-content: center; align-items: center;">
+        <div id="modalContent" style="background: var(--card-bg); border-radius: 12px; padding: 2rem; max-width: 800px; width: 90%; max-height: 90vh; overflow-y: auto; position: relative;">
+            <!-- Modal content will be inserted here -->
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
     <script>
-// News post data
-const newsPosts = [
-  {
-    title: "Exciting Launch: New Product Line",
-    date: "April 10, 2024",
-    image: "Assets/Blog/about.png",
-    content: `We are thrilled to announce the launch of our latest product line, designed to revolutionize the industry. Stay tuned for more details!`
-  },
-  {
-    title: "CEO Interview: Vision for the Future",
-    date: "April 8, 2024",
-    image: "https://img.youtube.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
-    content: `<iframe src='https://www.youtube.com/embed/dQw4w9WgXcQ' frameborder='0' allowfullscreen style='width:100%;height:300px;'></iframe><br>Our CEO shares insights on the company’s vision and upcoming projects in this exclusive interview. Watch the full video for more information.`
-  },
-  {
-    title: "Awarded Best Innovation 2024",
-    date: "April 5, 2024",
-    image: "Assets/Blog/app.png",
-    content: `We are honored to receive the Best Innovation Award for 2024. Thank you to our dedicated team and supporters!`
-  },
-  {
-    title: "Sustainability Initiatives",
-    date: "April 2, 2024",
-    image: "Assets/Blog/art-1.png",
-    content: `Discover how we are making strides in sustainability and reducing our environmental impact through innovative solutions.`
-  },
-  {
-    title: "Webinar: Industry Trends 2024",
-    date: "March 28, 2024",
-    image: "https://img.youtube.com/vi/3JZ_D3ELwOQ/hqdefault.jpg",
-    content: `<iframe src='https://www.youtube.com/embed/3JZ_D3ELwOQ' frameborder='0' allowfullscreen style='width:100%;height:300px;'></iframe><br>Join our experts as they discuss the latest trends and forecasts in the industry. Register now to secure your spot!`
-  },
-  {
-    title: "Community Outreach Program",
-    date: "March 20, 2024",
-    image: "Assets/Blog/art.png",
-    content: `We recently launched a community outreach program to support local initiatives and foster positive change.`
-  },
-  {
-    title: "Employee Spotlight: Meet the Team",
-    date: "March 15, 2024",
-    image: "Assets/Blog/blog.png",
-    content: `Get to know the talented individuals behind our success in our new Employee Spotlight series.`
-  },
-  {
-    title: "Tech Demo: Next-Gen Solutions",
-    date: "March 10, 2024",
-    image: "https://img.youtube.com/vi/tgbNymZ7vqY/hqdefault.jpg",
-    content: `<iframe src='https://www.youtube.com/embed/tgbNymZ7vqY' frameborder='0' allowfullscreen style='width:100%;height:300px;'></iframe><br>Watch our latest tech demo showcasing next-generation solutions and their real-world applications.`
-  },
-  {
-    title: "Upcoming Events: Save the Dates",
-    date: "March 5, 2024",
-    image: "Assets/Blog/Books.png",
-    content: `Mark your calendars for our upcoming events. We look forward to seeing you there!`
-  }
-];
-
-// Modal logic
-const modal = document.getElementById('newsModal');
-const modalBody = document.getElementById('modalBody');
-const modalClose = document.getElementById('modalClose');
-
-function openModal(postIndex) {
-  const post = newsPosts[postIndex-1];
-  modalBody.innerHTML = `
-    <h2 style='margin-bottom:0.5rem;'>${post.title}</h2>
-    <span class='news-date'>${post.date}</span><br><br>
-    <img src='${post.image}' alt='${post.title}' style='width:100%;max-width:700px;max-height:400px;object-fit:contain;display:block;margin:0 auto 1rem auto;border-radius:12px;'>
-    <div style='color:var(--text-primary);font-size:1.1rem;'>${post.content}</div>
-  `;
-  modal.style.display = 'flex';
-}
-
-// Attach event listeners
-Array.from(document.getElementsByClassName('read-btn')).forEach(btn => {
-  btn.onclick = function() {
-    openModal(this.getAttribute('data-post'));
-  };
-});
-modalClose.onclick = function() {
-  modal.style.display = 'none';
-};
-window.onclick = function(event) {
-  if (event.target === modal) {
-    modal.style.display = 'none';
-  }
-};
-
-// News filter logic
-const newsFilterBtns = document.querySelectorAll('#newsFilters .filter-btn');
-const newsPostsGrid = document.getElementById('newsGrid'); // Changed from newsPosts to newsPostsGrid
-const newsPostsGridItems = newsPostsGrid.querySelectorAll('.news-post'); // Get all news posts within the grid
-
-newsFilterBtns.forEach(btn => {
-  btn.addEventListener('click', function() {
-    newsFilterBtns.forEach(b => b.classList.remove('active'));
-    this.classList.add('active');
-    const filter = this.getAttribute('data-filter');
-    newsPostsGridItems.forEach(post => { // Iterate over the items within the grid
-      if (filter === 'all' || post.getAttribute('data-type') === filter) {
-        post.style.display = 'block';
-      } else {
-        post.style.display = 'none';
-      }
-    });
-  });
-});
-</script>
+        // Load posts from Supabase
+        async function loadPostsFromSupabase() {
+            try {
+                const { data: posts, error } = await supabase
+                    .from('posts')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+                
+                if (error) {
+                    console.error('Error loading posts:', error);
+                    return;
+                }
+                
+                const postsContainer = document.querySelector('.projects-grid');
+                postsContainer.innerHTML = '';
+                
+                if (!posts || posts.length === 0) {
+                    postsContainer.innerHTML = '<p style="text-align:center;color:var(--text-secondary);padding:2rem;">No blog posts found. Posts will appear here once created.</p>';
+                    return;
+                }
+                
+                // Create all post elements at once
+                const postElements = posts.map((post, index) => {
+                    const postTag = post.tag || 'news';
+                    const postElement = document.createElement('div');
+                    postElement.className = 'project-card news-post';
+                    postElement.setAttribute('data-post', index);
+                    postElement.setAttribute('data-type', postTag);
+                    postElement.innerHTML = `
+                        <span class="news-tag">${postTag.charAt(0).toUpperCase() + postTag.slice(1).replace('-', ' ')}</span>
+                        <img src="${post.image_url}" alt="${post.title}" style="width:100%;height:225px;object-fit:cover;border-radius:12px 12px 0 0;">
+                        <div class="project-header" style="margin-bottom:0;">
+                            <div>
+                                <h3 style="margin-bottom:0.3rem;">${post.title}</h3>
+                                <span class="news-date">Created: ${new Date(post.created_at).toLocaleDateString()}${post.updated_at ? ' • Updated: ' + new Date(post.updated_at).toLocaleDateString() : ''}</span>
+                            </div>
+                        </div>
+                        <br>
+                        <button class="btn btn-primary read-btn" data-post="${index}">Read</button>
+                    `;
+                    return postElement;
+                });
+                
+                // Append all elements at once
+                postsContainer.append(...postElements);
+                
+                // Update newsPosts array for modal functionality
+                window.newsPosts = posts.map(post => ({
+                    title: post.title,
+                    created_at: post.created_at,
+                    updated_at: post.updated_at,
+                    image: post.image_url,
+                    content: post.content
+                }));
+                
+                // Attach event listeners
+                attachModalListeners();
+            } catch (error) {
+                console.error('Error in loadPostsFromSupabase:', error);
+            }
+        }
+        
+        // Attach modal event listeners
+        function attachModalListeners() {
+            document.querySelectorAll('.read-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const postIndex = this.getAttribute('data-post');
+                    const post = window.newsPosts[postIndex];
+                    if (post) {
+                        showPostModal(post);
+                    }
+                });
+            });
+        }
+        
+        // Show post modal
+        function showPostModal(post) {
+            const modal = document.getElementById('postModal');
+            const modalContent = document.getElementById('modalContent');
+            
+            modalContent.innerHTML = `
+                <div style="position:relative;">
+                    <button onclick="closeModal()" style="position:absolute;top:0;right:0;background:none;border:none;font-size:2rem;cursor:pointer;color:var(--text-primary);">&times;</button>
+                    <h2 style="margin-bottom:1rem;color:var(--text-primary);">${post.title}</h2>
+                    <p style="color:var(--text-secondary);margin-bottom:1.5rem;font-size:0.9rem;">
+                        Created: ${new Date(post.created_at).toLocaleDateString()}
+                        ${post.updated_at ? ' • Updated: ' + new Date(post.updated_at).toLocaleDateString() : ''}
+                    </p>
+                    <img src="${post.image}" alt="${post.title}" style="width:100%;max-height:300px;object-fit:cover;border-radius:8px;margin-bottom:1rem;">
+                    <div style="color:var(--text-primary);line-height:1.6;">${post.content}</div>
+                </div>
+            `;
+            
+            modal.style.display = 'flex';
+        }
+        
+        // Close modal
+        function closeModal() {
+            document.getElementById('postModal').style.display = 'none';
+        }
+        
+        // Close modal when clicking outside
+        document.getElementById('postModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+        
+        // Load posts when page loads
+        document.addEventListener('DOMContentLoaded', loadPostsFromSupabase);
+        
+        // Mobile menu toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a nav link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+            });
+        });
+        
+        // News filter logic
+        const newsFilterBtns = document.querySelectorAll('#newsFilters .filter-btn');
+        
+        newsFilterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                newsFilterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                const filter = this.getAttribute('data-filter');
+                
+                const newsPostsGridItems = document.querySelectorAll('.news-post');
+                newsPostsGridItems.forEach(post => {
+                    if (filter === 'all' || post.getAttribute('data-type') === filter) {
+                        post.style.display = 'block';
+                    } else {
+                        post.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html> 

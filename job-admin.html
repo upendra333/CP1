@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Listings Admin Tool</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <style>
+        .admin-form-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: #fff;
+            color: #333;
+            font-family: inherit;
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            background: #fff !important;
+            color: #333 !important;
+            outline: 2px solid var(--accent-color, #007bff);
+        }
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #1e90ff 0%, #00c3ff 100%);
+            color: white;
+        }
+        .btn-secondary {
+            background: var(--border-color);
+            color: var(--text-primary);
+        }
+        .btn:hover {
+            opacity: 0.9;
+        }
+        .btn-clear:hover {
+            background: #ff6b6b !important;
+            color: white !important;
+        }
+        .message {
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+        .message.success {
+            background: rgba(81, 207, 102, 0.1);
+            color: #51cf66;
+            border: 1px solid #51cf66;
+        }
+        .message.error {
+            background: rgba(255, 107, 107, 0.1);
+            color: #ff6b6b;
+            border: 1px solid #ff6b6b;
+        }
+        .jobs-list {
+            margin-top: 3rem;
+        }
+        .job-item {
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .job-info h3 {
+            margin: 0 0 0.5rem 0;
+            color: var(--text-primary);
+        }
+        .job-info p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .job-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+        .btn-danger {
+            background: #ff6b6b;
+            color: white;
+        }
+        .requirements-list, .responsibilities-list {
+            margin-top: 1rem;
+        }
+        .requirement-item, .responsibility-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .remove-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 0.25rem 0.5rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div style="text-align:center;margin-top:2.5rem;margin-bottom:1.5rem;">
+            <img src="Assets/Logo/CP_Master_V3-dark.svg" alt="Chargepower Logo" class="cp-logo" style="max-width:180px;width:100%;height:auto;" />
+        </div>
+        
+        <div class="admin-form-card">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;flex-wrap:wrap;">
+                <h2 style="color:var(--text-primary);margin:0;">Job Listings Management</h2>
+                <div style="flex-shrink:0;display:flex;gap:1rem;">
+                    <button class="btn btn-secondary" id="backToChoiceBtn" style="position:relative;z-index:2;">Back to Admin Choice</button>
+                    <button class="btn btn-secondary" id="logoutBtn" style="position:relative;z-index:2;">Logout</button>
+                </div>
+            </div>
+            
+            <div id="message"></div>
+            
+            <form id="jobForm">
+                <div id="formHeader" style="margin-bottom:1.5rem;">
+                    <h3 style="color:var(--text-primary);margin:0;">Create New Job Listing</h3>
+                </div>
+                
+                <input type="hidden" id="editJobId" value="">
+                
+                <div class="form-group">
+                    <label for="title">Job Title *</label>
+                    <input type="text" id="title" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="department">Department *</label>
+                    <select id="department" required>
+                        <option value="">Select department</option>
+                        <option value="engineering">Engineering</option>
+                        <option value="operations">Operations</option>
+                        <option value="sales">Sales & Business</option>
+                        <option value="internship">Internships</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Location *</label>
+                    <input type="text" id="location" placeholder="e.g., Remote / Toronto, ON" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="country">Country *</label>
+                    <select id="country" required>
+                        <option value="">Select country</option>
+                        <option value="Canada">Canada</option>
+                        <option value="USA">USA</option>
+                        <option value="India">India</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="type">Job Type *</label>
+                    <select id="type" required>
+                        <option value="">Select job type</option>
+                        <option value="Full-time">Full-time</option>
+                        <option value="Part-time">Part-time</option>
+                        <option value="Contract">Contract</option>
+                        <option value="Internship">Internship</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="experience">Experience Level *</label>
+                    <input type="text" id="experience" placeholder="e.g., 5+ years" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Job Description *</label>
+                    <textarea id="description" placeholder="Enter detailed job description..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="requirements">Requirements</label>
+                    <div id="requirementsContainer">
+                        <div class="requirement-item">
+                            <input type="text" class="requirement-input" placeholder="Add a requirement...">
+                            <button type="button" class="remove-btn" onclick="removeRequirement(this)">Remove</button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary" onclick="addRequirement()" style="margin-top:0.5rem;">Add Requirement</button>
+                </div>
+
+                <div class="form-group">
+                    <label for="responsibilities">Responsibilities</label>
+                    <div id="responsibilitiesContainer">
+                        <div class="responsibility-item">
+                            <input type="text" class="responsibility-input" placeholder="Add a responsibility...">
+                            <button type="button" class="remove-btn" onclick="removeResponsibility(this)">Remove</button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary" onclick="addResponsibility()" style="margin-top:0.5rem;">Add Responsibility</button>
+                </div>
+
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-primary" id="submitBtn">Publish Job</button>
+                    <button type="button" class="btn btn-secondary btn-clear" onclick="clearForm()" id="clearBtn">Clear Form</button>
+                    <button type="button" class="btn btn-secondary" onclick="cancelEdit()" id="cancelBtn" style="display:none;">Cancel Edit</button>
+                </div>
+            </form>
+            
+            <div class="jobs-list">
+                <h3 style="color:var(--text-primary);margin-bottom:1.5rem;">Existing Job Listings</h3>
+                <div id="jobsList"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check authentication on page load
+        window.addEventListener('load', async () => {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (!session) {
+                window.location.href = 'login.html';
+                return;
+            }
+            loadJobs();
+            
+            // Attach logout event listener
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    logout();
+                });
+            }
+            
+            // Attach back to choice event listener
+            const backToChoiceBtn = document.getElementById('backToChoiceBtn');
+            if (backToChoiceBtn) {
+                backToChoiceBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.location.href = 'login.html?showChoice=true';
+                });
+            }
+        });
+
+        // Handle form submission
+        document.getElementById('jobForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const title = document.getElementById('title').value;
+            const department = document.getElementById('department').value;
+            const location = document.getElementById('location').value;
+            const country = document.getElementById('country').value;
+            const type = document.getElementById('type').value;
+            const experience = document.getElementById('experience').value;
+            const description = document.getElementById('description').value;
+            const editJobId = document.getElementById('editJobId').value;
+            
+            console.log('Form submission - editJobId:', editJobId);
+            console.log('Form submission - title:', title);
+            
+            // Collect requirements and responsibilities
+            const requirements = Array.from(document.querySelectorAll('.requirement-input')).map(input => input.value).filter(value => value.trim() !== '');
+            const responsibilities = Array.from(document.querySelectorAll('.responsibility-input')).map(input => input.value).filter(value => value.trim() !== '');
+            
+            try {
+                // Save job to database
+                const jobData = {
+                    title: title,
+                    department: department,
+                    location: location,
+                    country: country,
+                    type: type,
+                    experience: experience,
+                    description: description,
+                    requirements: requirements,
+                    responsibilities: responsibilities
+                };
+                
+                let result;
+                if (editJobId) {
+                    // Update existing job
+                    console.log('Updating existing job with ID:', editJobId);
+                    jobData.id = parseInt(editJobId);
+                    result = await supabase
+                        .from('jobs')
+                        .update(jobData)
+                        .eq('id', parseInt(editJobId))
+                        .select()
+                        .single();
+                } else {
+                    // Create new job
+                    console.log('Creating new job');
+                    result = await supabase
+                        .from('jobs')
+                        .insert([jobData])
+                        .select()
+                        .single();
+                }
+                
+                const { error } = result;
+                
+                if (error) {
+                    showMessage('Failed to save job: ' + error.message, 'error');
+                } else {
+                    showMessage('Job listing published successfully!', 'success');
+                    clearForm();
+                    loadJobs();
+                }
+            } catch (error) {
+                showMessage('An error occurred: ' + error.message, 'error');
+            }
+        });
+
+        // Load existing jobs
+        async function loadJobs() {
+            try {
+                const { data: jobs, error } = await supabase
+                    .from('jobs')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+                
+                if (error) {
+                    showMessage('Failed to load jobs: ' + error.message, 'error');
+                    return;
+                }
+                
+                const jobsList = document.getElementById('jobsList');
+                jobsList.innerHTML = '';
+                
+                if (!jobs || jobs.length === 0) {
+                    jobsList.innerHTML = '<p style="color:var(--text-secondary);text-align:center;padding:2rem;">No job listings found. Create your first job listing above!</p>';
+                    return;
+                }
+                
+                jobs.forEach(job => {
+                    const jobElement = document.createElement('div');
+                    jobElement.className = 'job-item';
+                    jobElement.innerHTML = `
+                        <div class="job-info">
+                            <h3>${job.title}</h3>
+                            <p>📍 ${job.location} • ${job.type} • ${job.experience}</p>
+                            <p style="font-size:0.8rem;color:var(--text-secondary);margin-top:0.3rem;">
+                                <span style="background:var(--accent-color);color:white;padding:0.2rem 0.5rem;border-radius:4px;margin-right:0.5rem;">${job.department}</span>
+                                <span style="background:var(--border-color);color:var(--text-primary);padding:0.2rem 0.5rem;border-radius:4px;">Created: ${new Date(job.created_at).toLocaleDateString()}</span>
+                            </p>
+                        </div>
+                        <div class="job-actions">
+                            <button class="btn btn-secondary btn-small" onclick="editJob(${job.id})">Edit</button>
+                            <button class="btn btn-danger btn-small" onclick="deleteJob(${job.id})">Delete</button>
+                        </div>
+                    `;
+                    jobsList.appendChild(jobElement);
+                });
+            } catch (error) {
+                showMessage('Failed to load jobs: ' + error.message, 'error');
+            }
+        }
+
+        // Delete job
+        async function deleteJob(jobId) {
+            if (!confirm('Are you sure you want to delete this job listing? This action cannot be undone.')) {
+                return;
+            }
+            
+            try {
+                const { error } = await supabase
+                    .from('jobs')
+                    .delete()
+                    .eq('id', jobId);
+                
+                if (error) {
+                    showMessage('Failed to delete job: ' + error.message, 'error');
+                    return;
+                }
+                
+                showMessage('Job listing deleted successfully!', 'success');
+                loadJobs();
+            } catch (error) {
+                showMessage('Failed to delete job: ' + error.message, 'error');
+            }
+        }
+
+        // Edit job
+        async function editJob(jobId) {
+            try {
+                const { data: job } = await supabase
+                    .from('jobs')
+                    .select('*')
+                    .eq('id', jobId)
+                    .single();
+                
+                if (job) {
+                    document.getElementById('editJobId').value = job.id;
+                    document.getElementById('title').value = job.title;
+                    document.getElementById('department').value = job.department;
+                    document.getElementById('location').value = job.location;
+                    document.getElementById('country').value = job.country;
+                    document.getElementById('type').value = job.type;
+                    document.getElementById('experience').value = job.experience;
+                    document.getElementById('description').value = job.description;
+                    
+                    // Load requirements
+                    const requirementsContainer = document.getElementById('requirementsContainer');
+                    requirementsContainer.innerHTML = '';
+                    if (job.requirements && job.requirements.length > 0) {
+                        job.requirements.forEach(req => {
+                            addRequirement(req);
+                        });
+                    } else {
+                        addRequirement();
+                    }
+                    
+                    // Load responsibilities
+                    const responsibilitiesContainer = document.getElementById('responsibilitiesContainer');
+                    responsibilitiesContainer.innerHTML = '';
+                    if (job.responsibilities && job.responsibilities.length > 0) {
+                        job.responsibilities.forEach(resp => {
+                            addResponsibility(resp);
+                        });
+                    } else {
+                        addResponsibility();
+                    }
+                    
+                    document.getElementById('formHeader').innerHTML = `
+                        <h3 style="color:var(--text-primary);margin:0;">Edit Job Listing</h3>
+                    `;
+                    document.getElementById('submitBtn').textContent = 'Update Job';
+                    document.getElementById('clearBtn').style.display = 'none';
+                    document.getElementById('cancelBtn').style.display = 'inline-block';
+                } else {
+                    showMessage('Job not found.', 'error');
+                }
+            } catch (error) {
+                showMessage('Failed to load job for editing: ' + error.message, 'error');
+            }
+        }
+
+        // Add requirement
+        function addRequirement(value = '') {
+            const container = document.getElementById('requirementsContainer');
+            const div = document.createElement('div');
+            div.className = 'requirement-item';
+            div.innerHTML = `
+                <input type="text" class="requirement-input" placeholder="Add a requirement..." value="${value}">
+                <button type="button" class="remove-btn" onclick="removeRequirement(this)">Remove</button>
+            `;
+            container.appendChild(div);
+        }
+
+        // Remove requirement
+        function removeRequirement(button) {
+            button.parentElement.remove();
+        }
+
+        // Add responsibility
+        function addResponsibility(value = '') {
+            const container = document.getElementById('responsibilitiesContainer');
+            const div = document.createElement('div');
+            div.className = 'responsibility-item';
+            div.innerHTML = `
+                <input type="text" class="responsibility-input" placeholder="Add a responsibility..." value="${value}">
+                <button type="button" class="remove-btn" onclick="removeResponsibility(this)">Remove</button>
+            `;
+            container.appendChild(div);
+        }
+
+        // Remove responsibility
+        function removeResponsibility(button) {
+            button.parentElement.remove();
+        }
+
+        // Clear form
+        function clearForm() {
+            document.getElementById('jobForm').reset();
+            document.getElementById('editJobId').value = ''; // Clear the edit job ID
+            document.getElementById('requirementsContainer').innerHTML = '';
+            document.getElementById('responsibilitiesContainer').innerHTML = '';
+            addRequirement();
+            addResponsibility();
+            document.getElementById('formHeader').innerHTML = `
+                <h3 style="color:var(--text-primary);margin:0;">Create New Job Listing</h3>
+            `;
+            document.getElementById('submitBtn').textContent = 'Publish Job';
+            document.getElementById('clearBtn').style.display = 'inline-block';
+            document.getElementById('cancelBtn').style.display = 'none';
+        }
+
+        // Cancel edit
+        function cancelEdit() {
+            clearForm();
+            loadJobs();
+        }
+
+        // Show message
+        function showMessage(message, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.innerHTML = `<div class="message ${type}">${message}</div>`;
+            setTimeout(() => {
+                messageDiv.innerHTML = '';
+            }, 5000);
+        }
+
+        // Logout
+        async function logout() {
+            await supabase.auth.signOut();
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html> 

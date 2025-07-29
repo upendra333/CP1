@@ -14,7 +14,7 @@
         <div class="nav-container">
             <div class="nav-logo">
                 <a href="index.html">
-                    <img src="Assets/Logo/CP_Master_V3-dark.svg" alt="Chargepower Logo" class="cp-logo" />
+                    <img src="Assets\Logo\CP_Master_V3-dark.svg" alt="Chargepower Logo" class="cp-logo"/>
                 </a>
                 <span class="region-label">- North America</span>
             </div>
@@ -23,6 +23,7 @@
                 <a href="naprojects.html" class="nav-link">Projects</a>
                 <a href="naabout.html" class="nav-link">About</a>
                 <a href="nablog.html" class="nav-link">Blog</a>
+                <a href="nacareers.html" class="nav-link">Careers</a>
                 <a href="naContact.html" class="nav-link">Contact</a>
             </div>
             <div class="nav-toggle">
@@ -65,8 +66,8 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h2>Powering North America’s Energy Future</h2>
-                    <p>At Charge Power, we specialize in delivering execution-driven consulting and field services for Battery Energy Storage Systems (BESS) and renewable energy projects across North America. From engineering reviews to commissioning management and market compliance, we serve as your trusted Owner’s Execution Engineer - bridging the gap between design, field execution, and operational performance to ensure your projects succeed from start to finish.</p>
+                    <h2>Powering North America’s <br>Energy Future</h2>
+                    <p>At Charge Power, we specialize in energy storage, grid integration, and technical project execution. We deliver end-to-end support for utility-scale and commercial energy projects, with expertise in execution strategies, technology-agnostic integration, interconnection compliance, and lifecycle performance. Our team bridges the gap between developers, OEMs, EPCs, utilities, and ISOs — ensuring every project meets regulatory, operational, and market-readiness standards. From early design to final energization and dispatch, Charge Power provides execution certainty in a complex energy landscape.</p>
                     <div class="about-stats">
                         <div class="about-stat">
                             <span class="stat-number">10+</span>
@@ -95,57 +96,476 @@
         </div>
     </section>
 
-    <!-- Bento Grid Section -->
-    <section id="solutions" class="bento-section">
+    <!-- Services Section -->
+    <section id="solutions" class="services-section">
         <div class="container">
             <h2 class="section-title">Services</h2>
-            <p class="section-subtitle">Charge Power delivers strategic and technical leadership across the energy project lifecycle by  providing execution-focused consulting for BESS and renewable projects, serving as a trusted partner from design to operations.</p>
-            <div class="bento-grid">
-                <div class="bento-card service-card">
-                    <div class="card-content">
-                        <div class="card-icon"><i class="fas fa-clipboard-check"></i></div>
-                        <h3>Engineering Reviews (BESS, hybrid systems)</h3>
-                        <p>We provide expert engineering reviews for Battery Energy Storage Systems (BESS) and hybrid renewable systems—ensuring designs meet technical standards, compliance, and performance goals before execution.</p>
+            <p class="section-subtitle">Charge Power delivers strategic and technical leadership across the energy project lifecycle with execution centered solutions for BESS, trusted execution partner for energy transition leaders across North America.</p>
+            
+            <!-- Service Tabs -->
+            <div class="service-tabs">
+                <button class="tab-btn active" data-tab="cni">C&I, EV Charging, Agri and Hotels</button>
+                <button class="tab-btn" data-tab="ipp">IPP, EPC and O&M</button>
+                <button class="tab-btn" data-tab="investors">Investors and Developers</button>
+            </div>
+            
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- C&I, EV Charging, Agri and Hotels -->
+                <div class="tab-pane active" id="cni">
+                    <div class="service-cards">
+                        <div class="service-card">
+                            <h3>Turnkey BESS / BESS+Solar Solutions</h3>
+                            <p>Integrated, end-to-end energy systems engineered for precision — from design to grid dispatch. Charge Power delivers storage and hybrid solar projects that are optimized for performance, resilience, and long-term value.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3>Energy-as-a-Service (EaaS) / Power Purchase Agreements (PPA)</h3>
+                            <p>No-capex energy solutions delivering immediate cost savings, peak demand reduction, and ESG compliance through flexible long-term service models.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3>Energy Transition Strategy & Delivery</h3>
+                            <p>We don't just advise — we execute. Charge Power builds decarbonization roadmaps that move from whiteboard to energization, aligning clean tech investment with operational ROI, compliance, and resilience.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="bento-card service-card">
-                    <div class="card-content">
-                        <div class="card-icon"><i class="fas fa-network-wired"></i></div>
-                        <h3>SCADA/EMS & Control Optimization</h3>
-                        <p>Our team delivers tailored SCADA and Energy Management System (EMS) solutions that optimize system control, enhance operational efficiency, and ensure seamless market integration.</p>
+                
+                <!-- IPP, EPC and O&M -->
+                <div class="tab-pane" id="ipp">
+                    <div class="service-cards">
+                        <div class="service-card">
+                            <h3>Owner's Execution Engineer & Field Oversight</h3>
+                            <p>Think of us as your project's control tower. From QA/QC to milestone verification, our on-site experts protect your timelines, budgets, and technical integrity — acting as an extension of your leadership team.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3>Interconnection Support</h3>
+                            <p>From application to approval, we fast-track your path to the grid. Charge Power simplifies ISO and utility engagement, resolves delays, and de-risks the interconnection process for complex energy assets.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3>Technical Optimizers</h3>
+                            <p>Specialized SCADA/EMS, analytics platform tuning, and testing — ensuring safe, compliant, and revenue-ready asset operation from day one.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="bento-card service-card">
-                    <div class="card-content">
-                        <div class="card-icon"><i class="fas fa-eye"></i></div>
-                        <h3>Owner’s Execution Engineer & Field Oversight</h3>
-                        <p>Acting as your on-site execution partner, we bridge the gap between design and delivery by providing field supervision, contractor coordination, and execution assurance throughout the project lifecycle.</p>
-                    </div>
-                </div>
-                <div class="bento-card service-card">
-                    <div class="card-content">
-                        <div class="card-icon"><i class="fas fa-clipboard-list"></i></div>
-                        <h3>QA/QC & Commissioning Management</h3>
-                        <p>We manage the entire commissioning process with a focus on Quality Assurance and Quality Control (QA/QC), ensuring every system is tested, validated, and delivered to meet project requirements.</p>
-                    </div>
-                </div>
-                <div class="bento-card service-card">
-                    <div class="card-content">
-                        <div class="card-icon"><i class="fas fa-balance-scale"></i></div>
-                        <h3>Market Testing & Compliance (ISO's...)</h3>
-                        <p>Our experts help ensure your projects meet ISO and market compliance standards through rigorous testing, validation, and integration support—maximizing market readiness and operational value.</p>
-                    </div>
-                </div>
-                <div class="bento-card service-card">
-                    <div class="card-content">
-                        <div class="card-icon"><i class="fas fa-cogs"></i></div>
-                        <h3>O&M Strategy & Lifecycle Planning</h3>
-                        <p>We craft robust Operations & Maintenance (O&M) strategies and lifecycle plans that safeguard asset performance, minimize downtime, and ensure long-term project success.</p>
+                
+                <!-- Investors and Developers -->
+                <div class="tab-pane" id="investors">
+                    <div class="service-cards">
+                        <div class="service-card">
+                            <h3>Market Testing & Compliance</h3>
+                            <p>We lead performance testing, validation, and regulatory sign-offs to ensure every asset meets dispatch standards and revenue readiness from day one.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3>Portfolio Performance Reviews & Optimization</h3>
+                            <p>Uncover hidden value with data-driven performance audits, root-cause diagnostics, and actionable strategies to maximize asset ROI.</p>
+                        </div>
+                        <div class="service-card">
+                            <h3>Advanced Analytics & Asset Management platform (under works)</h3>
+                            <p>Intelligent tools for tracking uptime, degradation, dispatch, and compliance — powering smarter operations and long-term portfolio health.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- USP Section -->
+    <section id="usp" class="usp-section">
+        <div class="container">
+            <h2 class="section-title" style="margin-bottom:2.5rem;">Why ChargePower?</h2>
+            <div class="usp-cards-grid">
+                <div class="usp-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>Zero investment</h3>
+                        </div>
+                        <div class="card-back">
+                            <h3>Zero investment options available</h3>
+                            <ul>
+                                <li>EaaS model/ PPA</li>
+                                <li>BaaS</li>
+                                <li>Benefit sharing models</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="usp-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>One Stop Solution</h3>
+                        </div>
+                        <div class="card-back">
+                            <h3>One Stop solution</h3>
+                            <ul>
+                                <li>Design to commissioning</li>
+                                <li>Asset management</li>
+                                <li>End of life & re-powering</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="usp-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>Deep Expertise</h3>
+                        </div>
+                        <div class="card-back">
+                            <h3>Deep energy storage expertise</h3>
+                            <ul>
+                                <li>Trusted by devs, EPCs, and asset owners across PJM, ERCOT, NYISO, CAISO, MISO, and IESO</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="usp-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <h3>Experienced Team</h3>
+                        </div>
+                        <div class="card-back">
+                            <h3>Experienced team</h3>
+                            <ul>
+                                <li>Combined experience of 50+ years in BESS, Solar PV & Wind projects</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+    /* Services Section Styles */
+    .services-section {
+        padding: 80px 0;
+        background: var(--dark-bg);
+    }
+    
+    .service-tabs {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+    }
+    
+    .tab-btn {
+        background: linear-gradient(135deg, rgba(22,41,244,0.1), rgba(4,254,1,0.1));
+        border: 1px solid rgba(22,41,244,0.3);
+        color: var(--text-primary);
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        font-size: 0.95rem;
+        white-space: nowrap;
+    }
+    
+    .tab-btn:hover {
+        background: linear-gradient(135deg, rgba(22,41,244,0.2), rgba(4,254,1,0.2));
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(22,41,244,0.3);
+    }
+    
+    .tab-btn.active {
+        background: linear-gradient(135deg, rgba(22,41,244,0.3), rgba(4,254,1,0.3));
+        border-color: var(--primary-green);
+        box-shadow: 0 8px 25px rgba(4,254,1,0.3);
+    }
+    
+    .tab-content {
+        position: relative;
+    }
+    
+    .tab-pane {
+        display: none;
+        animation: fadeIn 0.5s ease-in-out;
+    }
+    
+    .tab-pane.active {
+        display: block;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .service-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    
+    .service-card {
+        background: linear-gradient(135deg, rgba(22,41,244,0.1), rgba(4,254,1,0.1));
+        border: 1px solid rgba(22,41,244,0.2);
+        border-radius: 16px;
+        padding: 2rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .service-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #1e90ff, #00c3ff);
+        transform: scaleX(0);
+        transition: transform 0.3s ease, background 0.3s ease;
+    }
+    
+    .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(22,41,244,0.2);
+        border-color: rgba(22,41,244,0.4);
+    }
+    
+    .service-card:hover::before {
+        transform: scaleX(1);
+        background: linear-gradient(90deg, #1629f4, #04fe01);
+    }
+    
+    .service-card h3 {
+        color: var(--text-primary);
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        line-height: 1.4;
+        text-align: center;
+    }
+    
+    .service-card p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+    
+    @media (max-width: 768px) {
+        .service-tabs {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .tab-btn {
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+            font-size: 0.9rem;
+            padding: 0.8rem 1.5rem;
+        }
+        
+        .service-cards {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .service-card {
+            padding: 1.5rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.1rem;
+            margin-right: 2.5rem;
+        }
+    }
+    
+    .usp-section {
+        padding: 30px 0;
+        background: var(--dark-bg);
+    }
+    .usp-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .usp-card {
+        perspective: 1000px;
+        height: 200px;
+        position: relative;
+        transform-style: preserve-3d;
+    }
+    
+    .card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+        cursor: pointer;
+        transform-origin: center center;
+        top: 0;
+        left: 0;
+    }
+    
+    .usp-card.flipped .card-inner {
+        transform: rotateY(180deg);
+    }
+    
+    .card-front, .card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 16px;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        top: 0;
+        left: 0;
+    }
+    
+    .card-front::before, .card-back::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 3px;
+        right: 3px;
+        height: 3px;
+        background: linear-gradient(90deg, #1629f4, #04fe01);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+        z-index: 10;
+        border-radius: 13px 13px 0 0;
+    }
+    
+    .usp-card:hover .card-front::before,
+    .usp-card:hover .card-back::before {
+        transform: scaleX(1);
+    }
+    .card-front {
+        background: linear-gradient(135deg, rgba(22,41,244,0.15), rgba(4,254,1,0.12));
+        border: 1px solid rgba(22,41,244,0.2);
+    }
+    .card-back {
+        background: linear-gradient(135deg, rgba(4,254,1,0.15), rgba(22,41,244,0.12));
+        border: 1px solid rgba(4,254,1,0.2);
+        transform: rotateY(180deg);
+    }
+    .card-front h3, .card-back h3 {
+        color: var(--text-primary);
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+    .card-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+    }
+    .card-back ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+    }
+    .card-back li {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 0.5rem;
+        padding-left: 1.2rem;
+        position: relative;
+    }
+    .card-back li::before {
+        content: '•';
+        color: var(--primary-green);
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .usp-card:hover .card-inner {
+        transform: rotateY(5deg) scale(1.02);
+    }
+    .usp-card.flipped:hover .card-inner {
+        transform: rotateY(175deg) scale(1.02);
+    }
+    @media (max-width: 1024px) {
+        .usp-cards-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+    }
+    @media (max-width: 768px) {
+        .usp-cards-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        .usp-card {
+            height: 180px;
+        }
+        .card-front, .card-back {
+            padding: 1.5rem;
+        }
+        .card-front h3, .card-back h3 {
+            font-size: 1.1rem;
+        }
+        .card-icon {
+            font-size: 2.5rem;
+        }
+    }
+    </style>
+
+    <script>
+    // Service Tabs functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const targetTab = this.getAttribute('data-tab');
+                
+                // Remove active class from all buttons and panes
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabPanes.forEach(p => p.classList.remove('active'));
+                
+                // Add active class to clicked button and corresponding pane
+                this.classList.add('active');
+                document.getElementById(targetTab).classList.add('active');
+            });
+        });
+    });
+    
+    // USP 3D Card Flip logic
+    document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.usp-card');
+        
+        cards.forEach(card => {
+            card.addEventListener('click', function() {
+                // Toggle flip state
+                this.classList.toggle('flipped');
+                
+                // Optional: Add sound effect or haptic feedback
+                // You can add audio.play() here if you want sound effects
+            });
+            
+            // Add hover effect for better UX
+            card.addEventListener('mouseenter', function() {
+                if (!this.classList.contains('flipped')) {
+                    this.style.transform = 'scale(1.02)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    });
+    </script>
 
     <!-- Partners Section -->
     <section id="partners" class="partners-section">
@@ -184,7 +604,7 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2025 Charge Power Inc. All rights reserved.</p>
-                <p>Designed & Developed by ardnepu</p>
+                <p>Designed & Developed by <a href="http://www.ardnepu.com" target="_blank" rel="noopener noreferrer" style="background: linear-gradient(90deg, #1e90ff 0%, #00c3ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none;">ardnepu</a></p>
             </div>
         </div>
     </footer>
@@ -202,12 +622,12 @@
     // Info modal popup logic for partners and affiliations
     const infoContent = {
       // Partners
-      rw: `<strong>Renewable Watt LLC</strong>, a Houston based firm specializing in on-site construction and commissioning management.<br>Charge Power + Renewable Watt ensures that site execution is aligned with commissioning best practices.`,
-      cks: `<strong>CKS Solution Inc</strong>, an Ohio based firm delivering after-sales and O&M field services.<br>Charge Power + CKS provides long-term support beyond commissioning, ensuring asset performance and reliability.`,
-      pure: `<strong>PURE</strong> – a pioneer in EV, battery technology and power electronics, and a leader in energy storage innovation across India. Charge Power will exclusively bring PURE's advanced energy storage systems to Canada and USA.`,
+      rw: `<strong>Renewable Watt LLC</strong>, a Houston based firm specializing in on-site construction and commissioning management.<br>Charge Power + Renewable Watt ensures that site execution is aligned with commissioning best practices.<br><br><a href="https://renewablewatt.com/" target="_blank" rel="noopener noreferrer" style="background: linear-gradient(90deg, #1e90ff 0%, #00c3ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; font-weight: 600;">Visit RenewableWatt.com →</a>`,
+      cks: `<strong>CKS Solution Inc</strong>, an Ohio based firm delivering after-sales and O&M field services.<br>Charge Power + CKS provides long-term support beyond commissioning, ensuring asset performance and reliability.<br><br><a href="http://www.ckssolution.com/" target="_blank" rel="noopener noreferrer" style="background: linear-gradient(90deg, #1e90ff 0%, #00c3ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; font-weight: 600;">Visit CKS Solution →</a>`,
+      pure: `<strong>PURE</strong> – a pioneer in EV, battery technology and power electronics, and a leader in energy storage innovation across India. Charge Power will exclusively bring PURE's advanced energy storage systems to Canada and USA.<br><br><a href="https://www.pureenergy.co.in/" target="_blank" rel="noopener noreferrer" style="background: linear-gradient(90deg, #1e90ff 0%, #00c3ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; font-weight: 600;">Visit PURE Energy →</a>`,
       // Affiliations
-      esc: `Charge Power is a member of Energy Storage Canada, the only national voice for energy storage in Canada.`,
-      pso: `Our team is licensed to provide Engineering services in Ontario. We also have partner engineering firms across Canada to provide engineering services in BC, Alberta, and Nova Scotia.`
+      esc: `Charge Power is a member of Energy Storage Canada, the only national voice for energy storage in Canada.<br><br><a href="https://www.energystoragecanada.org/" target="_blank" rel="noopener noreferrer" style="background: linear-gradient(90deg, #1e90ff 0%, #00c3ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; font-weight: 600;">Visit Energy Storage Canada →</a>`,
+      pso: `Our team is licensed to provide Engineering services in Ontario. We also have partner engineering firms across Canada to provide engineering services in BC, Alberta, and Nova Scotia.<br><br><a href="https://www.peo.on.ca/" target="_blank" rel="noopener noreferrer" style="background: linear-gradient(90deg, #1e90ff 0%, #00c3ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; font-weight: 600;">Visit Professional Engineers Ontario →</a>`
     };
     document.querySelectorAll('.partner-logo').forEach(logo => {
       logo.addEventListener('click', function(e) {
