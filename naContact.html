@@ -267,7 +267,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
         (function() {
-            emailjs.init("YOUR_EMAILJS_PUBLIC_KEY"); // Replace with your EmailJS public key
+            emailjs.init("gTr382A7UknjukQq4"); // Your EmailJS public key
         })();
     </script>
     <script>
@@ -362,20 +362,23 @@
                             first_name: firstName,
                             last_name: lastName,
                             email: email,
-                            phone: phone,
-                            company: company,
+                            phone: phone || 'Not provided',
+                            company: company || 'Not provided',
                             project_type: projectType,
-                            project_size: projectSize,
+                            project_size: projectSize || 'Not specified',
                             message: message
                         };
+                        
+                        console.log('Sending contact form email with params:', templateParams);
+                        
                         emailjs.send(
-                            'YOUR_EMAILJS_SERVICE_ID', // Replace with your EmailJS service ID
-                            'YOUR_EMAILJS_TEMPLATE_ID', // Replace with your EmailJS template ID
+                            'service_m6detwu', // Your EmailJS service ID
+                            'template_o1qi3zq', // Your EmailJS template ID for contact form
                             templateParams
                         ).then(function(response) {
-                            // Optionally show a notification for email sent
+                            console.log('Contact form email sent successfully:', response);
                         }, function(error) {
-                            // Optionally handle email send error
+                            console.error('Contact form email error:', error);
                         });
 
                         showNotification('Message sent successfully! We\'ll get back to you within 2 hours.', 'success');
@@ -427,7 +430,7 @@
             notification.style.transition = 'transform 0.3s ease';
             
             if (type === 'success') {
-                notification.style.background = 'var(--primary-green)';
+                notification.style.background = 'linear-gradient(135deg, #1629f4 0%, #04fe01 100%)';
             } else {
                 notification.style.background = '#ff4444';
             }
