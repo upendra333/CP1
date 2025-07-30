@@ -1713,6 +1713,16 @@ body {
     background: rgba(22,41,244,0.5);
 }
 
+.mobile-only {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-only {
+        display: block;
+    }
+}
+
 @media (max-width: 768px) {
     .testimonials-grid {
         display: flex;
@@ -1722,13 +1732,16 @@ body {
 
     .testimonial-card {
         padding: 1.5rem;
-        min-width: calc(33.333% - 0.67rem);
-        height: 250px; /* Slightly smaller height for mobile */
+        min-width: 100%; /* Show full width card on mobile */
+        height: auto; /* Allow height to adjust to content */
+        flex: 0 0 100%;
     }
 
     .testimonial-text {
         font-size: 0.9rem;
-        -webkit-line-clamp: 5; /* Fewer lines on mobile */
+        -webkit-line-clamp: unset; /* Remove line clamp to show full content */
+        overflow: visible;
+        display: block;
     }
 
     .client-name {

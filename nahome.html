@@ -700,6 +700,10 @@
                      <div class="testimonial-dots">
                          <span class="dot active" onclick="goToTestimonials(0)"></span>
                          <span class="dot" onclick="goToTestimonials(1)"></span>
+                         <span class="dot mobile-only" onclick="goToTestimonials(2)"></span>
+                         <span class="dot mobile-only" onclick="goToTestimonials(3)"></span>
+                         <span class="dot mobile-only" onclick="goToTestimonials(4)"></span>
+                         <span class="dot mobile-only" onclick="goToTestimonials(5)"></span>
                      </div>
                      <button class="nav-btn next-btn" onclick="changeTestimonials(1)">
                          <i class="fas fa-chevron-right"></i>
@@ -737,8 +741,22 @@
     // Testimonials Navigation
     document.addEventListener('DOMContentLoaded', function() {
         let currentSlide = 0;
-        const totalSlides = 1; // 2 sets of 3 testimonials each (slides 0 and 1)
-        const testimonialsPerSlide = 3;
+        let totalSlides = 1; // 2 sets of 3 testimonials each (slides 0 and 1)
+        let testimonialsPerSlide = 3;
+
+        function isMobile() {
+            return window.innerWidth <= 768;
+        }
+
+        function updateSlideSettings() {
+            if (isMobile()) {
+                testimonialsPerSlide = 1; // Show 1 card per slide on mobile
+                totalSlides = 5; // 6 cards total, so 6 slides (0-5)
+            } else {
+                testimonialsPerSlide = 3; // Show 3 cards per slide on desktop
+                totalSlides = 1; // 2 sets of 3 testimonials (slides 0 and 1)
+            }
+        }
 
         function showTestimonials(slideIndex) {
             const cards = document.querySelectorAll('.testimonial-card');
@@ -746,6 +764,7 @@
             
             console.log('Showing testimonials for slide:', slideIndex);
             console.log('Total cards found:', cards.length);
+            console.log('Is mobile:', isMobile());
             
             // Update dots
             dots.forEach(dot => dot.classList.remove('active'));
@@ -753,7 +772,7 @@
                 dots[slideIndex].classList.add('active');
             }
             
-            // Show current set of 3 testimonials
+            // Show current set of testimonials
             const startIndex = slideIndex * testimonialsPerSlide;
             const endIndex = startIndex + testimonialsPerSlide;
             
@@ -789,8 +808,16 @@
         window.changeTestimonials = changeTestimonials;
         window.goToTestimonials = goToTestimonials;
 
-        // Initialize first set
+        // Initialize with current settings
+        updateSlideSettings();
         showTestimonials(0);
+
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            updateSlideSettings();
+            currentSlide = 0; // Reset to first slide
+            showTestimonials(0);
+        });
 
         // Auto-advance testimonials every 6 seconds
         setInterval(() => {
