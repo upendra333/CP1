@@ -143,6 +143,53 @@
             cursor: pointer;
             font-size: 0.8rem;
         }
+        
+        /* Rich text editor styles */
+        #toolbar button {
+            transition: all 0.2s ease;
+        }
+        
+        #toolbar button:hover {
+            background: var(--accent-color) !important;
+            color: white !important;
+            border-color: var(--accent-color) !important;
+        }
+        
+        #toolbar button:active {
+            transform: scale(0.95);
+        }
+        
+        #editor:focus {
+            outline: 2px solid var(--accent-color, #007bff);
+        }
+        
+        #editor ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+        
+        #editor li {
+            margin: 0.3rem 0;
+        }
+        
+        #editor p {
+            margin: 0.5rem 0;
+        }
+        
+        /* Color button styles */
+        .colorBtn {
+            transition: all 0.2s ease;
+            border: 2px solid transparent !important;
+        }
+        
+        .colorBtn:hover {
+            transform: scale(1.1);
+            border-color: var(--text-primary) !important;
+        }
+        
+        .colorBtn:active {
+            transform: scale(0.95);
+        }
     </style>
 </head>
 <body>
@@ -218,7 +265,30 @@
 
                 <div class="form-group">
                     <label for="description">Job Description *</label>
-                    <textarea id="description" placeholder="Enter detailed job description..." required></textarea>
+                    <div id="richTextEditor" style="border: 1px solid var(--border-color); border-radius: 8px; background: #fff;">
+                        <div id="toolbar" style="padding: 0.5rem; border-bottom: 1px solid var(--border-color); display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; background: #e9ecef;">
+                            <button type="button" id="boldBtn" style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px; background: #fff; cursor: pointer; font-weight: bold; min-width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;" title="Bold">B</button>
+                            <button type="button" id="italicBtn" style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px; background: #fff; cursor: pointer; font-style: italic; min-width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;" title="Italic">I</button>
+                            <button type="button" id="underlineBtn" style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px; background: #fff; cursor: pointer; text-decoration: underline; min-width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;" title="Underline">U</button>
+                            <div style="width: 1px; height: 30px; background: var(--border-color); margin: 0 0.5rem;"></div>
+                            <button type="button" id="bulletBtn" style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px; background: #fff; cursor: pointer; min-width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;" title="Bullet List">•</button>
+                            <button type="button" id="newLineBtn" style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px; background: #fff; cursor: pointer; min-width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;" title="New Line">↵</button>
+                            <div style="width: 1px; height: 30px; background: var(--border-color); margin: 0 0.5rem;"></div>
+                            <div style="display: flex; gap: 0.3rem; align-items: center;">
+                                <span style="font-size: 0.8rem; color: var(--text-secondary); margin-right: 0.3rem;">Color:</span>
+                                <button type="button" class="colorBtn" data-color="#ffffff" style="width: 20px; height: 20px; border: 1px solid var(--border-color); border-radius: 3px; background: #ffffff; cursor: pointer;" title="White"></button>
+                                <button type="button" class="colorBtn" data-color="#ff0000" style="width: 20px; height: 20px; border: 1px solid var(--border-color); border-radius: 3px; background: #ff0000; cursor: pointer;" title="Red"></button>
+                                <button type="button" class="colorBtn" data-color="#00ff00" style="width: 20px; height: 20px; border: 1px solid var(--border-color); border-radius: 3px; background: #00ff00; cursor: pointer;" title="Green"></button>
+                                <button type="button" class="colorBtn" data-color="#0000ff" style="width: 20px; height: 20px; border: 1px solid var(--border-color); border-radius: 3px; background: #0000ff; cursor: pointer;" title="Blue"></button>
+                                <button type="button" class="colorBtn" data-color="#ffff00" style="width: 20px; height: 20px; border: 1px solid var(--border-color); border-radius: 3px; background: #ffff00; cursor: pointer;" title="Yellow"></button>
+                                <button type="button" class="colorBtn" data-color="#ff00ff" style="width: 20px; height: 20px; border: 1px solid var(--border-color); border-radius: 3px; background: #ff00ff; cursor: pointer;" title="Magenta"></button>
+                                <button type="button" class="colorBtn" data-color="#00ffff" style="width: 20px; height: 20px; border: 1px solid var(--border-color); border-radius: 3px; background: #00ffff; cursor: pointer;" title="Cyan"></button>
+                                <button type="button" class="colorBtn" data-color="#ff8000" style="width: 20px; height: 20px; border: 1px solid var(--border-color); border-radius: 3px; background: #ff8000; cursor: pointer;" title="Orange"></button>
+                            </div>
+                        </div>
+                        <div id="editor" contenteditable="true" style="min-height: 120px; padding: 0.75rem; outline: none; color: #ffffff; font-family: inherit; line-height: 1.6; background: #2a2a2a;" placeholder="Enter detailed job description..."></div>
+                    </div>
+                    <textarea id="description" style="display: none;" required></textarea>
                 </div>
 
                 <div class="form-group">
@@ -258,6 +328,189 @@
     </div>
 
     <script>
+        // Rich text editor functionality
+        function initRichTextEditor() {
+            const editor = document.getElementById('editor');
+            const contentTextarea = document.getElementById('description');
+            
+            // Function to apply formatting
+            function applyFormatting(tag) {
+                editor.focus();
+                const selection = window.getSelection();
+                
+                if (selection.rangeCount > 0) {
+                    const range = selection.getRangeAt(0);
+                    
+                    if (!range.collapsed) {
+                        // Apply formatting to selected text
+                        const element = document.createElement(tag);
+                        range.surroundContents(element);
+                    } else {
+                        // Insert formatting tags at cursor position
+                        const element = document.createElement(tag);
+                        element.textContent = 'formatted text';
+                        range.insertNode(element);
+                        
+                        // Select the inserted text
+                        range.setStart(element.firstChild, 0);
+                        range.setEnd(element.firstChild, element.firstChild.length);
+                        selection.removeAllRanges();
+                        selection.addRange(range);
+                    }
+                }
+                updateContent();
+            }
+            
+            // Function to apply color
+            function applyColor(color) {
+                editor.focus();
+                const selection = window.getSelection();
+                
+                if (selection.rangeCount > 0) {
+                    const range = selection.getRangeAt(0);
+                    
+                    if (!range.collapsed) {
+                        // Apply color to selected text
+                        const span = document.createElement('span');
+                        span.style.color = color;
+                        range.surroundContents(span);
+                    } else {
+                        // Insert colored text at cursor position
+                        const span = document.createElement('span');
+                        span.style.color = color;
+                        span.textContent = 'colored text';
+                        range.insertNode(span);
+                        
+                        // Select the inserted text
+                        range.setStart(span.firstChild, 0);
+                        range.setEnd(span.firstChild, span.firstChild.length);
+                        selection.removeAllRanges();
+                        selection.addRange(range);
+                    }
+                }
+                updateContent();
+            }
+            
+            // Function to insert list
+            function insertList() {
+                editor.focus();
+                const selection = window.getSelection();
+                
+                if (selection.rangeCount > 0) {
+                    const range = selection.getRangeAt(0);
+                    const listItem = document.createElement('li');
+                    listItem.textContent = 'List item';
+                    
+                    // Check if we're already in a list
+                    let list = range.commonAncestorContainer;
+                    while (list && list.nodeName !== 'UL' && list.nodeName !== 'OL') {
+                        list = list.parentNode;
+                    }
+                    
+                    if (!list) {
+                        list = document.createElement('ul');
+                        list.appendChild(listItem);
+                        range.insertNode(list);
+                    } else {
+                        list.appendChild(listItem);
+                    }
+                }
+                updateContent();
+            }
+            
+            // Function to insert line break
+            function insertLineBreak() {
+                editor.focus();
+                const selection = window.getSelection();
+                
+                if (selection.rangeCount > 0) {
+                    const range = selection.getRangeAt(0);
+                    const br = document.createElement('br');
+                    range.insertNode(br);
+                    range.setStartAfter(br);
+                    range.setEndAfter(br);
+                    selection.removeAllRanges();
+                    selection.addRange(range);
+                }
+                updateContent();
+            }
+            
+            // Function to update hidden textarea
+            function updateContent() {
+                contentTextarea.value = editor.innerHTML;
+            }
+            
+            // Toolbar button event listeners
+            document.getElementById('boldBtn').addEventListener('click', () => {
+                applyFormatting('strong');
+            });
+            
+            document.getElementById('italicBtn').addEventListener('click', () => {
+                applyFormatting('em');
+            });
+            
+            document.getElementById('underlineBtn').addEventListener('click', () => {
+                applyFormatting('u');
+            });
+            
+            // Color buttons functionality
+            document.querySelectorAll('.colorBtn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const color = btn.getAttribute('data-color');
+                    applyColor(color);
+                });
+            });
+            
+            document.getElementById('bulletBtn').addEventListener('click', () => {
+                insertList();
+            });
+            
+            document.getElementById('newLineBtn').addEventListener('click', () => {
+                insertLineBreak();
+            });
+            
+            // Sync editor content with hidden textarea
+            editor.addEventListener('input', updateContent);
+            editor.addEventListener('keyup', updateContent);
+            editor.addEventListener('paste', updateContent);
+            
+            // Handle Enter key for line breaks
+            editor.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    const selection = window.getSelection();
+                    if (selection.rangeCount > 0) {
+                        const range = selection.getRangeAt(0);
+                        const br = document.createElement('br');
+                        range.insertNode(br);
+                        range.setStartAfter(br);
+                        range.setEndAfter(br);
+                        selection.removeAllRanges();
+                        selection.addRange(range);
+                        updateContent();
+                    }
+                }
+            });
+            
+            // Handle paste to clean up formatting
+            editor.addEventListener('paste', (e) => {
+                e.preventDefault();
+                const text = (e.originalEvent || e).clipboardData.getData('text/plain');
+                const selection = window.getSelection();
+                if (selection.rangeCount > 0) {
+                    const range = selection.getRangeAt(0);
+                    range.deleteContents();
+                    range.insertNode(document.createTextNode(text));
+                }
+                updateContent();
+            });
+            
+            // Set initial content if editing
+            if (contentTextarea.value) {
+                editor.innerHTML = contentTextarea.value;
+            }
+        }
+        
         // Check authentication on page load
         window.addEventListener('load', async () => {
             const { data: { session } } = await supabase.auth.getSession();
@@ -266,6 +519,7 @@
                 return;
             }
             loadJobs();
+            initRichTextEditor();
             
             // Attach logout event listener
             const logoutBtn = document.getElementById('logoutBtn');
@@ -296,7 +550,7 @@
             const country = document.getElementById('country').value;
             const type = document.getElementById('type').value;
             const experience = document.getElementById('experience').value;
-            const description = document.getElementById('description').value;
+            const description = document.getElementById('editor').innerHTML;
             const editJobId = document.getElementById('editJobId').value;
             
             console.log('Form submission - editJobId:', editJobId);
@@ -441,7 +695,8 @@
                     document.getElementById('country').value = job.country;
                     document.getElementById('type').value = job.type;
                     document.getElementById('experience').value = job.experience;
-                    document.getElementById('description').value = job.description;
+                    document.getElementById('editor').innerHTML = job.description || '';
+                    document.getElementById('description').value = job.description || '';
                     
                     // Load requirements
                     const requirementsContainer = document.getElementById('requirementsContainer');
@@ -517,6 +772,8 @@
         function clearForm() {
             document.getElementById('jobForm').reset();
             document.getElementById('editJobId').value = ''; // Clear the edit job ID
+            document.getElementById('editor').innerHTML = '';
+            document.getElementById('description').value = '';
             document.getElementById('requirementsContainer').innerHTML = '';
             document.getElementById('responsibilitiesContainer').innerHTML = '';
             addRequirement();
