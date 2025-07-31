@@ -248,6 +248,7 @@
                             <button type="button" id="boldBtn" style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px; background: #fff; cursor: pointer; font-weight: bold; min-width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;" title="Bold">B</button>
                             <button type="button" id="italicBtn" style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px; background: #fff; cursor: pointer; font-style: italic; min-width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;" title="Italic">I</button>
                             <button type="button" id="underlineBtn" style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px; background: #fff; cursor: pointer; text-decoration: underline; min-width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;" title="Underline">U</button>
+                            <button type="button" id="linkBtn" style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px; background: #fff; cursor: pointer; min-width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;" title="Insert Link">🔗</button>
                             <div style="width: 1px; height: 30px; background: var(--border-color); margin: 0 0.5rem;"></div>
                             <button type="button" id="bulletBtn" style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px; background: #fff; cursor: pointer; min-width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;" title="Bullet List">•</button>
                             <button type="button" id="newLineBtn" style="padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px; background: #fff; cursor: pointer; min-width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;" title="New Line">↵</button>
@@ -391,6 +392,57 @@
                 updateContent();
             }
             
+            // Function to insert link
+            function insertLink() {
+                console.log('insertLink function called');
+                editor.focus();
+                const selection = window.getSelection();
+                console.log('Selection range count:', selection.rangeCount);
+                
+                if (selection.rangeCount > 0) {
+                    const range = selection.getRangeAt(0);
+                    console.log('Range collapsed:', range.collapsed);
+                    
+                    if (!range.collapsed) {
+                        // Apply link to selected text
+                        const url = prompt('Enter URL (e.g., https://example.com):', 'https://');
+                        console.log('URL entered:', url);
+                        if (url && url.trim() !== '') {
+                            const link = document.createElement('a');
+                            link.href = url.trim();
+                            link.target = '_blank';
+                            link.style.color = '#1e90ff';
+                            link.style.textDecoration = 'underline';
+                            range.surroundContents(link);
+                            console.log('Link applied to selected text');
+                        }
+                    } else {
+                        // Insert link at cursor position
+                        const url = prompt('Enter URL (e.g., https://example.com):', 'https://');
+                        console.log('URL entered:', url);
+                        if (url && url.trim() !== '') {
+                            const link = document.createElement('a');
+                            link.href = url.trim();
+                            link.target = '_blank';
+                            link.style.color = '#1e90ff';
+                            link.style.textDecoration = 'underline';
+                            link.textContent = 'link text';
+                            range.insertNode(link);
+                            
+                            // Select the inserted text
+                            range.setStart(link.firstChild, 0);
+                            range.setEnd(link.firstChild, link.firstChild.length);
+                            selection.removeAllRanges();
+                            selection.addRange(range);
+                            console.log('Link inserted at cursor position');
+                        }
+                    }
+                } else {
+                    console.log('No selection range found');
+                }
+                updateContent();
+            }
+            
             // Function to update hidden textarea
             function updateContent() {
                 contentTextarea.value = editor.innerHTML;
@@ -424,6 +476,17 @@
             document.getElementById('newLineBtn').addEventListener('click', () => {
                 insertLineBreak();
             });
+            
+            // Link button event listener - added separately to ensure it works
+            const linkBtn = document.getElementById('linkBtn');
+            if (linkBtn) {
+                linkBtn.addEventListener('click', () => {
+                    console.log('Link button clicked');
+                    insertLink();
+                });
+            } else {
+                console.error('Link button not found');
+            }
             
             // Sync editor content with hidden textarea
             editor.addEventListener('input', updateContent);
@@ -465,6 +528,10 @@
             if (contentTextarea.value) {
                 editor.innerHTML = contentTextarea.value;
             }
+            
+            // Test function accessibility
+            console.log('Rich text editor initialized');
+            console.log('insertLink function available:', typeof insertLink);
         }
         
         // Check authentication on page load
