@@ -70,12 +70,12 @@
                     <p>At Charge Power, we specialize in energy storage, grid integration, and technical project execution. We deliver end-to-end support for utility-scale and commercial energy projects, with expertise in execution strategies, technology-agnostic integration, interconnection compliance, and lifecycle performance. Our team bridges the gap between developers, OEMs, EPCs, utilities, and ISOs — ensuring every project meets regulatory, operational, and market-readiness standards. From early design to final energization and dispatch, Charge Power provides execution certainty in a complex energy landscape.</p>
                     <div class="about-stats">
                         <div class="about-stat">
-                            <span class="stat-number">10+</span>
+                            <span class="stat-number">17</span>
                             <span class="stat-label">Projects</span>
                         </div>
                         <div class="about-stat">
-                            <span class="stat-number">7580</span>
-                            <span class="stat-label">MWH</span>
+                            <span class="stat-number">4.2</span>
+                            <span class="stat-label">GWH</span>
                         </div>
                         <div class="about-stat">
                             <span class="stat-number">10000+</span>
@@ -168,6 +168,46 @@
         </div>
     </section>
 
+    <!-- Interactive Map Section -->
+    <section id="map" class="map-section">
+        <div class="container">
+            <h2 class="section-title">Our Presence</h2>
+            <p class="section-subtitle">ChargePower's strategic footprint across key energy markets in the United States and Canada</p>
+            
+            <div class="map-container">
+                <div class="map-wrapper">
+                    <img src="Assets/Map/ChargePower_Presence.svg" alt="ChargePower North America Presence Map" class="presence-map">
+                </div>
+                
+                <!-- Project Info Panel -->
+                <div class="project-info-panel">
+                    <h3>Project Highlights</h3>
+                    <div class="project-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">5</span>
+                            <span class="stat-label">Ongoing</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">5</span>
+                            <span class="stat-label">Upcoming</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">7</span>
+                            <span class="stat-label">Completed</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">7</span>
+                            <span class="stat-label">States/Provinces</span>
+                        </div>
+                    </div>
+                    <div class="project-details">
+                        <p>Our strategic presence spans across key energy markets in North America, with active projects in major ISO regions including CAISO, ERCOT, MISO, and PJM.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- USP Section -->
     <section id="usp" class="usp-section">
         <div class="container">
@@ -222,6 +262,197 @@
     </section>
 
     <style>
+    /* Interactive Map Section Styles */
+    .map-section {
+        padding: 80px 0;
+        background: var(--dark-bg);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .map-container {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 3rem;
+        align-items: start;
+        max-width: 1400px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .map-wrapper {
+        position: relative;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 1rem;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        text-align: center;
+    }
+    
+    .presence-map {
+        width: 100%;
+        height: auto;
+        max-height: 500px;
+        filter: drop-shadow(0 8px 32px rgba(0, 0, 0, 0.3));
+        border-radius: 12px;
+    }
+    
+    /* Map Legend */
+    .map-legend {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 1.5rem;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+    }
+    
+    .legend-marker {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+    }
+    
+    .legend-marker.active {
+        background: #04fe01;
+    }
+    
+    .legend-marker.future {
+        background: #1e90ff;
+    }
+    
+    .legend-marker.presence {
+        background: rgba(255, 255, 255, 0.3);
+    }
+    
+    /* Project Info Panel */
+    .project-info-panel {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        padding: 2rem;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    
+    .project-info-panel h3 {
+        color: var(--text-primary);
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    .project-stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .project-stats .stat-item {
+        text-align: center;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .project-stats .stat-number {
+        display: block;
+        font-size: 3rem;
+        font-weight: 700;
+        color: #04fe01;
+        margin-bottom: 0.25rem;
+    }
+    
+    .project-stats .stat-label {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+    }
+    
+    .project-details p {
+        color: var(--text-secondary);
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+        .map-container {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        .project-stats {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .map-section {
+            padding: 60px 0;
+        }
+        
+        .map-wrapper {
+            padding: 1rem;
+        }
+        
+        .map-legend {
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .project-stats {
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+        }
+        
+        .project-stats .stat-item {
+            padding: 0.75rem;
+        }
+        
+        .project-stats .stat-number {
+            font-size: 1.5rem;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .map-container {
+            gap: 1.5rem;
+        }
+        
+        .map-wrapper {
+            padding: 0.75rem;
+        }
+        
+        .project-info-panel {
+            padding: 1.5rem;
+        }
+        
+        .project-info-panel h3 {
+            font-size: 1.25rem;
+        }
+    }
+    
     /* Services Section Styles */
     .services-section {
         padding: 80px 0;
